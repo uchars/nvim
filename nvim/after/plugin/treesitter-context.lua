@@ -1,4 +1,4 @@
-local nnoremap = require("nils.keymap").nnoremap
+local nnoremap = require("theprimeagen.keymap").nnoremap
 
 function ContextSetup(show_all_context)
     require("treesitter-context").setup({
@@ -35,8 +35,7 @@ function ContextSetup(show_all_context)
     })
 end
 
-if (vim.fn.has("win32") == false) then
-    nnoremap("<leader>cf", function() ContextSetup(true) end)
-    nnoremap("<leader>cp", function() ContextSetup(false) end)
-    ContextSetup(false)
-end
+nnoremap("<leader>cf", function() ContextSetup(true) end)
+nnoremap("<leader>cp", function() ContextSetup(false) end)
+ContextSetup(false)
+
