@@ -4,7 +4,6 @@ if not has_flutter_tools then
   return
 end
 
-print("hi")
 require("flutter-tools").setup {
     closing_tags = {
         enabled = true,

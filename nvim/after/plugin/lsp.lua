@@ -64,12 +64,7 @@ cmp.setup({
 
 	sources = {
 		{ name = "nvim_lsp" },
-
-		-- For luasnip user.
-		{ name = "luasnip" },
-
 		{ name = "buffer" },
-
 	},
 })
 
@@ -117,7 +112,7 @@ require("lspconfig").clangd.setup(config())
 require("lspconfig").pylsp.setup(config())
 
 -- Type- & Javascript LSP
-require("lspconfig").tsserver.setup(config())
+require("typescript").setup(config())
 
 -- (S)CSS LSP
 require("lspconfig").cssls.setup(config())
@@ -125,9 +120,7 @@ require("lspconfig").cssls.setup(config())
 -- HTML
 require("lspconfig").html.setup(config())
 
--- Lua
-require'lspconfig'.sumneko_lua.setup(config())
-
+-- Go
 require("lspconfig").gopls.setup(config({
 	cmd = { "gopls", "serve" },
 	settings = {
@@ -167,24 +160,3 @@ local opts = {
 }
 
 require("symbols-outline").setup(opts)
-
-local snippets_paths = function()
-	local plugins = { "friendly-snippets" }
-	local paths = {}
-	local path
-	local root_path = vim.env.HOME .. "/.vim/plugged/"
-	for _, plug in ipairs(plugins) do
-		path = root_path .. plug
-		if vim.fn.isdirectory(path) ~= 0 then
-			table.insert(paths, path)
-		end
-	end
-	return paths
-end
-
-require("luasnip.loaders.from_vscode").lazy_load({
-	paths = snippets_paths(),
-	include = nil, -- Load all languages
-	exclude = {},
-})
-
