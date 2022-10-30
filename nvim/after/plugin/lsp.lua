@@ -110,10 +110,11 @@ end
 require("lspconfig").tsserver.setup(config())
 
 -- C languages
-require("lspconfig").ccls.setup(config())
+-- require("lspconfig").ccls.setup(config())
+require("lspconfig").clangd.setup(config())
 
 -- Python LSP
-require("lspconfig").pyright.setup(config())
+require("lspconfig").pylsp.setup(config())
 
 -- Type- & Javascript LSP
 require("lspconfig").tsserver.setup(config())

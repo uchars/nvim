@@ -1,4 +1,4 @@
-vim.g.theprimeagen_colorscheme = "tokyonight"
+vim.g.theprimeagen_colorscheme = "gruvbox"
 
 function ColorMyPencils()
     vim.g.gruvbox_contrast_dark = 'hard'
@@ -27,11 +27,11 @@ function ColorMyPencils()
     })
 
     hl("LineNr", {
-        fg = "#5eacd3"
+        fg = "#d79921"
     })
 
     hl("netrwDir", {
-        fg = "#5eacd3"
+        fg = "#d79921"
     })
 
 end
