@@ -1,3 +1,5 @@
+require 'nvim-treesitter.install'.compilers = { "clang" }
+
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
@@ -5,7 +7,6 @@ require'nvim-treesitter.configs'.setup {
         "lua",
         "dart",
         "css",
-        "c_sharp",
         "diff",
         "dockerfile",
         "cpp",
