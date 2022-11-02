@@ -1,9 +1,9 @@
-require("theprimeagen.set")
-require("theprimeagen.packer")
-require("theprimeagen.neogit")
+require("nils.set")
+require("nils.packer")
+require("nils.neogit")
 
 local augroup = vim.api.nvim_create_augroup
-ThePrimeagenGroup = augroup('ThePrimeagen', {})
+NilsGroup = augroup('Nils', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -24,7 +24,7 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufEnter", "BufWinEnter", "TabEnter"}, {
-    group = ThePrimeagenGroup,
+    group = NilsGroup,
     pattern = "*.rs",
     callback = function()
         require("lsp_extensions").inlay_hints{}
@@ -32,7 +32,7 @@ autocmd({"BufEnter", "BufWinEnter", "TabEnter"}, {
 })
 
 autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
+    group = NilsGroup,
     pattern = "*",
     command = "%s/\\s\\+$//e",
 })

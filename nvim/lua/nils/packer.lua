@@ -1,16 +1,3 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
 return require("packer").startup(function()
     -- Essentials (for other plugins)
     use("wbthomason/packer.nvim")
@@ -19,16 +6,15 @@ return require("packer").startup(function()
     use("tpope/vim-commentary")
 
     -- LSP
-    use({"neovim/nvim-lspconfig",
-        -- Install LSP's
-        run = "npm install -g pyright typescript typescript-language-server svelte-language-server vscode-langservers-extracted"
-    })
+    use("neovim/nvim-lspconfig")
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/nvim-cmp")
     use("onsails/lspkind-nvim")
     use("nvim-lua/lsp_extensions.nvim")
     use("glepnir/lspsaga.nvim")
+    use("L3MON4D3/LuaSnip")
+    use("saadparwaiz1/cmp_luasnip")
     use({"folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
@@ -47,7 +33,6 @@ return require("packer").startup(function()
     use("ThePrimeagen/harpoon")
     use("simrat39/symbols-outline.nvim")
     use("nvim-telescope/telescope.nvim")
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use("farmergreg/vim-lastplace")
 
     -- Colorscheme & Visual stuff
@@ -65,7 +50,6 @@ return require("packer").startup(function()
     use({"nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate"
     })
-    use("nvim-treesitter/playground")
     use("romgrk/nvim-treesitter-context")
 
     -- Debugging
@@ -76,6 +60,7 @@ return require("packer").startup(function()
     -- Formatting
     use("godlygeek/tabular")
     use("sbdchd/neoformat")
+    use("kylechui/nvim-surround")
 
     -- Language Specific
     use({
@@ -86,10 +71,5 @@ return require("packer").startup(function()
     use({"iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
-    use("jose-elias-alvarez/typescript.nvim")
-
-    if packer_bootstrap then
-        require('packer').sync()
-    end
 end)
 

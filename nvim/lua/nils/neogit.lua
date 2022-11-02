@@ -1,5 +1,5 @@
 local neogit = require('neogit')
-local nnoremap = require('theprimeagen.keymap').nnoremap
+local nnoremap = require('nils.keymap').nnoremap
 
 neogit.setup {}
 

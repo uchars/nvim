@@ -1,4 +1,10 @@
-local Remap = require("theprimeagen.keymap")
+local has_flutter_tools = pcall(require, "flutter-tools")
+if not has_flutter_tools then
+  print("flutter-tools not installed")
+  return
+end
+
+local Remap = require("nils.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 
@@ -64,11 +70,17 @@ cmp.setup({
 
 	sources = {
 		{ name = "nvim_lsp" },
+
+		-- For luasnip user.
+		{ name = "luasnip" },
+
 		{ name = "buffer" },
+
 	},
 })
 
-local function config(_config)
+local custom_attach = function(client)
+-- local function config(_config)
 	return vim.tbl_deep_extend("force", {
 		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = function()
@@ -98,54 +110,50 @@ local function config(_config)
 	}, _config or {})
 end
 
--- Flutter LSP (LSP setup done by other plugin)
--- require("lspconfig").dartls.setup(config())
-
--- Typescript LSP
-require("lspconfig").tsserver.setup(config())
-
 -- C languages
--- require("lspconfig").ccls.setup(config())
-require("lspconfig").clangd.setup(config())
+require("lspconfig").clangd.setup({on_attach = custom_attach})
+
+-- C#
+require("lspconfig").csharp_ls.setup({on_attach = custom_attach})
 
 -- Python LSP
-require("lspconfig").pylsp.setup(config())
+require("lspconfig").pylsp.setup({on_attach = custom_attach})
 
 -- Type- & Javascript LSP
-require("typescript").setup(config())
+require("lspconfig").tsserver.setup({on_attach = custom_attach})
 
 -- (S)CSS LSP
-require("lspconfig").cssls.setup(config())
+require("lspconfig").cssls.setup({on_attach = custom_attach})
 
 -- HTML
-require("lspconfig").html.setup(config())
+require("lspconfig").html.setup({on_attach = custom_attach})
 
 -- Go
-require("lspconfig").gopls.setup(config({
-	cmd = { "gopls", "serve" },
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-		},
-	},
-}))
+require("lspconfig").gopls.setup({on_attach = custom_attach})
 
--- who even uses this?
-require("lspconfig").rust_analyzer.setup(config({
-	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-	--[[
-    settings = {
-        rust = {
-            unstable_features = true,
-            build_on_save = false,
-            all_features = true,
+-- Flutter
+require("flutter-tools").setup({
+    closing_tags = {
+        enabled = true,
+        prefix = ">",
+    },
+
+    lsp = {
+        color = {
+            enabled = true,
+            background = false,
+            foreground = false,
+            virtual_text = true,
+            virtual_text_str = "■",
         },
+
+        on_attach = custom_attach,
+
+        settings = {
+            showTodos = false,
+        }
     }
-    --]]
-}))
+})
 
 local opts = {
 	-- whether to highlight the currently hovered symbol
@@ -160,3 +168,24 @@ local opts = {
 }
 
 require("symbols-outline").setup(opts)
+
+local snippets_paths = function()
+	local plugins = { "friendly-snippets" }
+	local paths = {}
+	local path
+	local root_path = vim.env.HOME .. "/.vim/plugged/"
+	for _, plug in ipairs(plugins) do
+		path = root_path .. plug
+		if vim.fn.isdirectory(path) ~= 0 then
+			table.insert(paths, path)
+		end
+	end
+	return paths
+end
+
+require("luasnip.loaders.from_vscode").lazy_load({
+	paths = snippets_paths(),
+	include = nil, -- Load all languages
+	exclude = {},
+})
+

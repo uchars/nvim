@@ -1,4 +1,4 @@
-local nnoremap = require("theprimeagen.keymap").nnoremap
+local nnoremap = require("nils.keymap").nnoremap
 
 local silent = { silent = true }
 
