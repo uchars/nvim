@@ -1,7 +1,13 @@
+local ok, treesitter_context = pcall(require, "treesitter-context")
+if not ok then
+  print("treesitter-context not installed")
+  return
+end
+
 local nnoremap = require("nils.keymap").nnoremap
 
 function ContextSetup(show_all_context)
-    require("treesitter-context").setup({
+    treesitter_context.setup({
         enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
         throttle = true, -- Throttles plugin updates (may improve performance)
         max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.

@@ -1,3 +1,9 @@
+local ok, telescope = pcall(require, "telescope")
+if not ok then
+  print("telescope not installed")
+  return
+end
+
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local previewers = require("telescope.previewers")

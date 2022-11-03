@@ -1,4 +1,10 @@
-require 'nvim-treesitter.install'.compilers = { "clang" }
+local ok, treesitter_install = pcall(require, "nvim-treesitter.install")
+if not ok then
+  print("neogit not installed")
+  return
+end
+
+treesitter_install.compilers = { "clang" }
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {

@@ -1,3 +1,5 @@
+_ = vim.cmd [[packadd packer.nvim]]
+
 return require("packer").startup(function()
     -- Essentials (for other plugins)
     use("wbthomason/packer.nvim")
