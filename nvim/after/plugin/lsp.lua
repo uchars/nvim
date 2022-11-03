@@ -1,3 +1,9 @@
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+    print("lspconfig not installed")
+    return
+end
+
 local has_flutter_tools = pcall(require, "flutter-tools")
 if not has_flutter_tools then
   print("flutter-tools not installed")
@@ -111,25 +117,43 @@ local custom_attach = function(client)
 end
 
 -- C languages
-require("lspconfig").clangd.setup({on_attach = custom_attach})
+lspconfig.clangd.setup({on_attach = custom_attach})
 
 -- C#
-require("lspconfig").csharp_ls.setup({on_attach = custom_attach})
+lspconfig.csharp_ls.setup({on_attach = custom_attach})
 
 -- Python LSP
-require("lspconfig").pylsp.setup({on_attach = custom_attach})
+lspconfig.pylsp.setup({on_attach = custom_attach})
 
 -- Type- & Javascript LSP
-require("lspconfig").tsserver.setup({on_attach = custom_attach})
+lspconfig.tsserver.setup({on_attach = custom_attach})
+
+-- Angular
+lspconfig.angularls.setup({on_attach = custom_attach})
+
+-- JSON
+lspconfig.jsonls.setup({on_attach = on_attach})
+
+-- eslint
+lspconfig.eslint.setup({on_attach = on_attach})
 
 -- (S)CSS LSP
-require("lspconfig").cssls.setup({on_attach = custom_attach})
+lspconfig.cssls.setup({on_attach = custom_attach})
 
 -- HTML
-require("lspconfig").html.setup({on_attach = custom_attach})
+lspconfig.html.setup({on_attach = custom_attach})
+
+-- Docker
+lspconfig.dockerls.setup({on_attach = custom_attach})
 
 -- Go
-require("lspconfig").gopls.setup({on_attach = custom_attach})
+lspconfig.gopls.setup({on_attach = custom_attach})
+
+-- CMake
+lspconfig.cmake.setup({on_attach = custom_attach})
+
+-- Bash
+lspconfig.bashls.setup({on_attach = custom_attach})
 
 -- Flutter
 require("flutter-tools").setup({
