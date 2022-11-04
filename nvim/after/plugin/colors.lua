@@ -1,4 +1,4 @@
-vim.g.theprimeagen_colorscheme = "gruvbox"
+vim.g.nils_colorscheme = "tokyonight"
 
 function ColorMyPencils()
     vim.opt.termguicolors = true
@@ -8,7 +8,7 @@ function ColorMyPencils()
     vim.g.gruvbox_invert_selection = '0'
     vim.opt.background = "dark"
 
-    vim.cmd("colorscheme " .. vim.g.theprimeagen_colorscheme)
+    vim.cmd("colorscheme " .. vim.g.nils_colorscheme)
 
     local hl = function(thing, opts)
         vim.api.nvim_set_hl(0, thing, opts)
