@@ -39,6 +39,8 @@ return require("packer").startup(function()
 
     -- Colorscheme & Visual stuff
     use("gruvbox-community/gruvbox")
+    use("rebelot/kanagawa.nvim")
+    use("Everblush/everblush.nvim")
     use("folke/tokyonight.nvim")
     use({"folke/zen-mode.nvim", config = function()
         require("zen-mode").setup {}

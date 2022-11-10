@@ -1,4 +1,4 @@
-vim.g.nils_colorscheme = "tokyonight"
+vim.g.nils_colorscheme = "kanagawa"
 
 function ColorMyPencils()
     vim.opt.termguicolors = true
