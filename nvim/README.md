@@ -26,7 +26,7 @@ choco install llvm
 
 ###### Python, TS, CSS, etc.
 ```bash
-npm i -g pyright typescript typescript-language-server svelte-language-server vscode-langservers-extracted
+npm i -g npm install -g pyright typescript typescript-language-server svelte-language-server vscode-langservers-extracted
 ```
 
 ###### C#

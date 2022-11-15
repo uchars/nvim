@@ -5,7 +5,7 @@ return require("packer").startup(function()
     use("wbthomason/packer.nvim")
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
-    use("tpope/vim-commentary")
+    use("numToStr/Comment.nvim")
 
     -- LSP
     use("neovim/nvim-lspconfig")
@@ -36,6 +36,9 @@ return require("packer").startup(function()
     use("simrat39/symbols-outline.nvim")
     use("nvim-telescope/telescope.nvim")
     use("farmergreg/vim-lastplace")
+    use({"nvim-tree/nvim-tree.lua", requires = {
+    "nvim-tree/nvim-web-devicons"
+    }})
 
     -- Colorscheme & Visual stuff
     use("gruvbox-community/gruvbox")

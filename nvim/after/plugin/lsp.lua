@@ -155,6 +155,9 @@ lspconfig.cmake.setup({on_attach = custom_attach})
 -- Bash
 lspconfig.bashls.setup({on_attach = custom_attach})
 
+-- Ruby
+lspconfig.solargraph.setup({on_attach = custom_attach})
+
 -- Flutter
 require("flutter-tools").setup({
     closing_tags = {

@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
@@ -189,6 +194,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-tree.lua",
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
@@ -249,11 +259,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\undotree",
     url = "https://github.com/mbbill/undotree"
-  },
-  ["vim-commentary"] = {
-    loaded = true,
-    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-commentary",
-    url = "https://github.com/tpope/vim-commentary"
   },
   ["vim-lastplace"] = {
     loaded = true,
