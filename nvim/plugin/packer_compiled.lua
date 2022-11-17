@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
   ["everblush.nvim"] = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\everblush.nvim",
@@ -113,6 +118,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\git-worktree.nvim",
     url = "https://github.com/ThePrimeagen/git-worktree.nvim"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   gruvbox = {
     loaded = true,
@@ -234,11 +244,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
   },
-  tabular = {
-    loaded = true,
-    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tabular",
-    url = "https://github.com/godlygeek/tabular"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
@@ -250,7 +255,7 @@ _G.packer_plugins = {
     url = "https://github.com/folke/tokyonight.nvim"
   },
   ["trouble.nvim"] = {
-    config = { "\27LJ\2\nG\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\14auto_fold\2\nsetup\ftrouble\frequire\0" },
+    config = { "\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17auto_preview\1\14auto_fold\2\nsetup\ftrouble\frequire\0" },
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
@@ -280,7 +285,7 @@ try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B
 time([[Config for zen-mode.nvim]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\nG\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\14auto_fold\2\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+try_loadstring("\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17auto_preview\1\14auto_fold\2\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
 
 _G._packer.inside_compile = false

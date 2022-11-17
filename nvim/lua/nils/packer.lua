@@ -21,6 +21,7 @@ return require("packer").startup(function()
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
         require("trouble").setup {
+            auto_preview = false,
             auto_fold = true,
         }
         end
@@ -28,8 +29,10 @@ return require("packer").startup(function()
 
     -- Versioning
     use("ThePrimeagen/git-worktree.nvim")
+    use("lewis6991/gitsigns.nvim")
     use("mbbill/undotree")
     use("TimUntersberger/neogit")
+    use("sindrets/diffview.nvim")
 
     -- Movement
     use("ThePrimeagen/harpoon")
@@ -37,7 +40,7 @@ return require("packer").startup(function()
     use("nvim-telescope/telescope.nvim")
     use("farmergreg/vim-lastplace")
     use({"nvim-tree/nvim-tree.lua", requires = {
-    "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons"
     }})
 
     -- Colorscheme & Visual stuff
@@ -65,7 +68,6 @@ return require("packer").startup(function()
     use("theHamsta/nvim-dap-virtual-text")
 
     -- Formatting
-    use("godlygeek/tabular")
     use("sbdchd/neoformat")
     use("kylechui/nvim-surround")
 
