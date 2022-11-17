@@ -1,6 +1,6 @@
 local ok, treesitter_install = pcall(require, "nvim-treesitter.install")
 if not ok then
-  print("neogit not installed")
+  print("treesitter not installed")
   return
 end
 
