@@ -66,6 +66,15 @@ return require("packer").startup(function()
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
+    use({"nvim-neotest/neotest", requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim",
+        "sidlatau/neotest-dart",
+        "haydenmeade/neotest-jest",
+        "nvim-neotest/neotest-python",
+      }
+    })
 
     -- Formatting
     use("sbdchd/neoformat")
