@@ -103,8 +103,7 @@ local custom_attach = function(client)
 			nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
 			nnoremap("]d", function() vim.diagnostic.goto_next() end)
 			nnoremap("[d", function() vim.diagnostic.goto_prev() end)
-			-- nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
-			nnoremap("<leader>vca", function() lspsaga.code_action() end)
+			nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
 			nnoremap("<leader>vco", function() vim.lsp.buf.code_action({
                 filter = function(code_action)
                     if not code_action or not code_action.data then
