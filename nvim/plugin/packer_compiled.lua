@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
@@ -164,6 +169,16 @@ _G.packer_plugins = {
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   neoformat = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neoformat",
@@ -173,6 +188,31 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neogit",
     url = "https://github.com/TimUntersberger/neogit"
+  },
+  neotest = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neotest",
+    url = "https://github.com/nvim-neotest/neotest"
+  },
+  ["neotest-dart"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neotest-dart",
+    url = "https://github.com/sidlatau/neotest-dart"
+  },
+  ["neotest-jest"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neotest-jest",
+    url = "https://github.com/haydenmeade/neotest-jest"
+  },
+  ["neotest-python"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neotest-python",
+    url = "https://github.com/nvim-neotest/neotest-python"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -219,6 +259,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter-context",
     url = "https://github.com/romgrk/nvim-treesitter-context"
   },
+  ["nvim-ts-autotag"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
@@ -255,7 +300,7 @@ _G.packer_plugins = {
     url = "https://github.com/folke/tokyonight.nvim"
   },
   ["trouble.nvim"] = {
-    config = { "\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17auto_preview\1\14auto_fold\2\nsetup\ftrouble\frequire\0" },
+    config = { "\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\14auto_fold\2\17auto_preview\1\nsetup\ftrouble\frequire\0" },
     loaded = true,
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
@@ -270,6 +315,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-lastplace",
     url = "https://github.com/farmergreg/vim-lastplace"
   },
+  ["vim-startuptime"] = {
+    loaded = true,
+    path = "C:\\Users\\sterz\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-startuptime",
+    url = "https://github.com/dstein64/vim-startuptime"
+  },
   ["zen-mode.nvim"] = {
     config = { "\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rzen-mode\frequire\0" },
     loaded = true,
@@ -279,14 +329,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\14auto_fold\2\17auto_preview\1\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 -- Config for: zen-mode.nvim
 time([[Config for zen-mode.nvim]], true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
 time([[Config for zen-mode.nvim]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17auto_preview\1\14auto_fold\2\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time([[Config for trouble.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

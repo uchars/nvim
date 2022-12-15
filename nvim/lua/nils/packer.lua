@@ -6,6 +6,7 @@ return require("packer").startup(function()
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
     use("numToStr/Comment.nvim")
+    use("dstein64/vim-startuptime")
 
     -- LSP
     use("neovim/nvim-lspconfig")
@@ -17,6 +18,9 @@ return require("packer").startup(function()
     use("glepnir/lspsaga.nvim")
     use("L3MON4D3/LuaSnip")
     use("saadparwaiz1/cmp_luasnip")
+    use("jose-elias-alvarez/null-ls.nvim")
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
     use({"folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
@@ -57,9 +61,7 @@ return require("packer").startup(function()
     })
 
     -- Treesitter
-    use({"nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate"
-    })
+    use("nvim-treesitter/nvim-treesitter")
     use("romgrk/nvim-treesitter-context")
 
     -- Debugging
@@ -89,5 +91,6 @@ return require("packer").startup(function()
     use({"iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
+    use("windwp/nvim-ts-autotag")
 end)
 
