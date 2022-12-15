@@ -14,7 +14,6 @@ return require("packer").startup(function()
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/nvim-cmp")
     use("onsails/lspkind-nvim")
-    use("nvim-lua/lsp_extensions.nvim")
     use("glepnir/lspsaga.nvim")
     use("L3MON4D3/LuaSnip")
     use("saadparwaiz1/cmp_luasnip")
@@ -40,7 +39,6 @@ return require("packer").startup(function()
 
     -- Movement
     use("ThePrimeagen/harpoon")
-    use("simrat39/symbols-outline.nvim")
     use("nvim-telescope/telescope.nvim")
     use("farmergreg/vim-lastplace")
     use({"nvim-tree/nvim-tree.lua", requires = {
@@ -79,7 +77,6 @@ return require("packer").startup(function()
     })
 
     -- Formatting
-    use("sbdchd/neoformat")
     use("kylechui/nvim-surround")
 
     -- Language Specific
