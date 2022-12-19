@@ -60,7 +60,7 @@ return require("packer").startup(function()
     }})
 
     -- Colorscheme & Visual stuff
-    use("gruvbox-community/gruvbox")
+    use("ellisonleao/gruvbox.nvim")
     use("rebelot/kanagawa.nvim")
     use("Everblush/everblush.nvim")
     use("folke/tokyonight.nvim")
@@ -75,20 +75,6 @@ return require("packer").startup(function()
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter")
     use("romgrk/nvim-treesitter-context")
-
-    -- Debugging
-    use("mfussenegger/nvim-dap")
-    use("rcarriga/nvim-dap-ui")
-    use("theHamsta/nvim-dap-virtual-text")
-    use({"nvim-neotest/neotest", requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        "antoinemadec/FixCursorHold.nvim",
-        "sidlatau/neotest-dart",
-        "haydenmeade/neotest-jest",
-        "nvim-neotest/neotest-python",
-      }
-    })
 
     -- Formatting
     use("kylechui/nvim-surround")

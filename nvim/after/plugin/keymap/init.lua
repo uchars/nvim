@@ -6,6 +6,8 @@ local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
 inoremap("<S-Tab>", "<C-d>")
+inoremap("<C-s>", "<ESC>:w<CR>i")
+
 nnoremap("<leader>pv", ":Ex<CR>")
 nnoremap("<leader>u", ":UndotreeShow<CR>")
 
