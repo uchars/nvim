@@ -1,9 +1,9 @@
 local download_packer = function()
-  if vim.fn.input "Download Packer? (y for yes)" ~= "y" then
+  if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
     return
   end
 
-  local directory = string.format("%s/site/pack/packer/start/", vim.fn.stdpath "data")
+  local directory = string.format("%s/site/pack/packer/start/", vim.fn.stdpath("data"))
 
   vim.fn.mkdir(directory, "p")
 
@@ -12,16 +12,16 @@ local download_packer = function()
   )
 
   print(out)
-  print "Downloading packer.nvim..."
-  print "( You'll need to restart now )"
-  vim.cmd [[qa]]
+  print("Downloading packer.nvim...")
+  print("( You'll need to restart now )")
+  vim.cmd([[qa]])
 end
 
 return function()
-    -- using packer as a basis of a new system.
-    if not pcall(require, "packer") then
-        download_packer()
-        return true
-    end
-    return false
+  -- using packer as a basis of a new system.
+  if not pcall(require, "packer") then
+    download_packer()
+    return true
+  end
+  return false
 end

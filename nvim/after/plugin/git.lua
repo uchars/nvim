@@ -11,7 +11,7 @@ end
 --   return
 -- end
 
-gitsigns.setup {
+gitsigns.setup({
   signs = {
     add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr" },
     change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr" },
@@ -50,4 +50,4 @@ gitsigns.setup {
     delay = 2000,
     virt_text_pos = "eol",
   },
-}
+})

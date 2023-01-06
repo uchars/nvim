@@ -1,5 +1,5 @@
-if require "nils.first_load"() then
-    return
+if require("nils.first_load")() then
+  return
 end
 
 require("nils")

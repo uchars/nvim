@@ -4,12 +4,12 @@ if not ok then
   return
 end
 
-local nnoremap = require('nils.keymap').nnoremap
+local nnoremap = require("nils.keymap").nnoremap
 
-neogit.setup {}
+neogit.setup({})
 
 nnoremap("<leader>gs", function()
-    neogit.open({ })
-end);
+  neogit.open({})
+end)
 
-nnoremap("<leader>ga", "<cmd>!git fetch --all<CR>");
+nnoremap("<leader>ga", "<cmd>!git fetch --all<CR>")
