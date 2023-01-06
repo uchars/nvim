@@ -72,6 +72,10 @@ return require("packer").startup(function()
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     })
 
+    use("norcalli/nvim-colorizer.lua") -- colorized color codes
+
+    use('windwp/nvim-autopairs')
+
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter")
     use("romgrk/nvim-treesitter-context")

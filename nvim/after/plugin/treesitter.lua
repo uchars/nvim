@@ -41,6 +41,15 @@ require'nvim-treesitter.configs'.setup {
         "yaml",
     },
 
+    autotag = {
+        enable = true,
+    },
+
+    indent = {
+        enable = true,
+        disable = {},
+    },
+
     sync_install = false,
 
     highlight = {
