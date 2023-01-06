@@ -24,17 +24,17 @@ nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
 
 -- greatest remap ever
-xnoremap("<leader>p", "\"_dP")
+xnoremap("<leader>p", '"_dP')
 
 -- next greatest remap ever : asbjornHaland
-nnoremap("<leader>y", "\"+y")
-vnoremap("<leader>y", "\"+y")
-nmap("<leader>Y", "\"+Y")
+nnoremap("<leader>y", '"+y')
+vnoremap("<leader>y", '"+y')
+nmap("<leader>Y", '"+Y')
 
-nnoremap("<leader>d", "\"_d")
-vnoremap("<leader>d", "\"_d")
+nnoremap("<leader>d", '"_d')
+vnoremap("<leader>d", '"_d')
 
-vnoremap("<leader>d", "\"_d")
+vnoremap("<leader>d", '"_d')
 
 -- This is going to get me cancelled
 inoremap("<C-c>", "<Esc>")
@@ -42,7 +42,7 @@ inoremap("<C-c>", "<Esc>")
 nnoremap("Q", "<nop>")
 nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 nnoremap("<leader>f", function()
-    vim.lsp.buf.format()
+  vim.lsp.buf.format()
 end)
 
 nnoremap("<C-k>", "<cmd>cnext<CR>zz")
@@ -54,11 +54,11 @@ nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 nnoremap("<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 nnoremap("<leader>tc", function()
-    tail.reset()
-    tmux.reset()
-end);
+  tail.reset()
+  tmux.reset()
+end)
 
 nnoremap("<leader>ta", function()
-    tail.reset()
-    tmux.reset()
-end);
+  tail.reset()
+  tmux.reset()
+end)

@@ -7,7 +7,5 @@ end
 local sections = { lualine_a = { hello } }
 
 lualine.setup({
-    sections = sections,
+  sections = sections,
 })
-
-
