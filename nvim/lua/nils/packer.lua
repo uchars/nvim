@@ -74,7 +74,7 @@ return require("packer").startup(function()
 
     use("norcalli/nvim-colorizer.lua") -- colorized color codes
 
-    use('windwp/nvim-autopairs')
+    use('windwp/nvim-autopairs') -- autopairs (), {}, "", '' ...
 
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter")
