@@ -65,8 +65,7 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings,
 })
 
--- Keymaps for LSP buffers
-lsp.on_attach(function(client, bufnr)
+local function setup_mappings(_, bufnr)
   local opts = { buffer = bufnr, remap = false, silent = true }
 
   nnoremap("gd", function()
@@ -91,7 +90,11 @@ lsp.on_attach(function(client, bufnr)
   nnoremap("gD", "<Cmd>Lspsaga lsp_finder<CR>", opts)
   nnoremap("gr", "<Cmd>Lspsaga rename<CR>", opts)
   nnoremap("<leader>vca", "<Cmd>Lspsaga code_action<CR>", opts)
-end)
+end
+
+-- Keymaps for LSP buffers
+-- lsp.on_attach(function(client, bufnr) end)
+lsp.on_attach = setup_mappings
 
 -- Flutter
 require("flutter-tools").setup({
@@ -109,7 +112,7 @@ require("flutter-tools").setup({
       virtual_text_str = "■",
     },
 
-    on_attach = custom_attach,
+    on_attach = setup_mappings,
 
     settings = {
       showTodos = false,
