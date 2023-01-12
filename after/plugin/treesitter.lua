@@ -37,23 +37,22 @@ require("nvim-treesitter.configs").setup({
     "phpdoc",
     "jsdoc",
     "regex",
-    "ruby",
     "yaml",
   },
 
-    autotag = {
-        enable = true,
-    },
+  autotag = {
+    enable = true,
+  },
 
-    indent = {
-        enable = true,
-        disable = {},
-    },
+  indent = {
+    enable = true,
+    disable = {},
+  },
 
-    sync_install = false,
+  sync_install = false,
 
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
 })
