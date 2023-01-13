@@ -37,12 +37,6 @@ return require("packer").startup(function()
   use({
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup({
-        auto_preview = false,
-        auto_fold = true,
-      })
-    end,
   })
 
   -- Versioning
@@ -65,17 +59,14 @@ return require("packer").startup(function()
   use("rebelot/kanagawa.nvim")
   use("Everblush/everblush.nvim")
   use("folke/tokyonight.nvim")
-  use({
-    "folke/zen-mode.nvim",
-    config = function()
-      require("zen-mode").setup({})
-    end,
-  })
+  use("folke/zen-mode.nvim")
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
-    use("norcalli/nvim-colorizer.lua") -- colorized color codes
+  use("norcalli/nvim-colorizer.lua") -- colorized color codes
 
-    use('windwp/nvim-autopairs') -- autopairs (), {}, "", '' ...
+  use("windwp/nvim-autopairs") -- autopairs (), {}, "", '' ...
+
+  use("lukas-reineke/indent-blankline.nvim")
 
   -- Treesitter
   use("nvim-treesitter/nvim-treesitter")
