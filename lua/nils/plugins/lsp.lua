@@ -1,6 +1,25 @@
+local conf = require("nils.configuration.lsp")
+
 return {
   {
     "VonHeikemen/lsp-zero.nvim",
+    config = conf.lspzero,
+    ft = {
+      "lua",
+      "javascriptreact",
+      "typescriptreact",
+      "javascript",
+      "typescript",
+      "dart",
+      "flutter",
+      "dockerfile",
+      "html",
+      "scss",
+      "css",
+      "html",
+      "json",
+    },
+
     dependencies = {
       -- LSP Support
       "neovim/nvim-lspconfig",
