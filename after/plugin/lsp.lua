@@ -89,8 +89,16 @@ local function setup_mappings(_, bufnr)
   nnoremap("K", "<Cmd>Lspsaga hover_doc<CR>", opts)
   nnoremap("gD", "<Cmd>Lspsaga lsp_finder<CR>", opts)
   nnoremap("gr", "<Cmd>Lspsaga rename<CR>", opts)
-  nnoremap("<leader>vca", "<Cmd>Lspsaga code_action<CR>", opts)
+  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
 end
+
+local opts = { buffer = bufnr, remap = false, silent = true }
+nnoremap("]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+nnoremap("[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+nnoremap("K", "<Cmd>Lspsaga hover_doc<CR>", opts)
+nnoremap("gD", "<Cmd>Lspsaga lsp_finder<CR>", opts)
+nnoremap("gr", "<Cmd>Lspsaga rename<CR>", opts)
+nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
 
 -- Keymaps for LSP buffers
 -- lsp.on_attach(function(client, bufnr) end)
@@ -120,8 +128,8 @@ require("flutter-tools").setup({
   },
 })
 
-lspsaga.init_lsp_saga({
-  code_action_lightbulb = {
+lspsaga.setup({
+  lightbulb = {
     enable = false,
   },
 })
