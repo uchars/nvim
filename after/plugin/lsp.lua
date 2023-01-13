@@ -7,6 +7,8 @@ end
 lsp.preset("recommended")
 lsp.ensure_installed({
   "tsserver",
+  "sumneko_lua",
+  "marksman",
 })
 
 local status2, cmp = pcall(require, "cmp")
