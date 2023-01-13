@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+require("nils.init")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -15,6 +15,12 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("nils.plugins", {
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
+  change_detection = {
+    notify = false,
+  },
+  defaults = {
+    lazy = true,
+  },
   ui = {
     icons = {
       cmd = "⌘",
@@ -28,6 +34,20 @@ require("lazy").setup("nils.plugins", {
       source = "📄",
       start = "🚀",
       task = "📌",
+    },
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
     },
   },
 })
