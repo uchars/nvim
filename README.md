@@ -4,9 +4,7 @@
 
 1. Install the dependencies in the [Stuff to install](##stuff-to-install) section
 2. Open neovim
-3. Press 'y' when prompted to install packer
-4. Open nvim again after it closes and run `:PackerSync`
-5. Wait for Treesitter to install the parsers (might take a while)
+3. Wait for Treesitter to install the parsers (might take a while)
 
 ## Stuff to install
 

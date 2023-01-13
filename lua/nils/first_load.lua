@@ -1,26 +1,29 @@
-local download_packer = function()
-  if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
+local download_lazy = function()
+  if vim.fn.input("Download Lazy? (y for yes)") ~= "y" then
     return
   end
 
-  local directory = string.format("%s/site/pack/packer/start/", vim.fn.stdpath("data"))
-
-  vim.fn.mkdir(directory, "p")
-
-  local out = vim.fn.system(
-    string.format("git clone %s %s", "https://github.com/wbthomason/packer.nvim", directory .. "/packer.nvim")
-  )
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+  vim.opt.rtp:prepend(lazypath)
 
   print(out)
-  print("Downloading packer.nvim...")
+  print("Downloading lazy.nvim...")
   print("( You'll need to restart now )")
   vim.cmd([[qa]])
 end
 
 return function()
   -- using packer as a basis of a new system.
-  if not pcall(require, "packer") then
-    download_packer()
+  if not pcall(require, "lazy") then
+    download_lazy()
     return true
   end
   return false

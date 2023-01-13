@@ -1,7 +1,3 @@
-local Remap = require("nils.keymap")
-local nnoremap = Remap.nnoremap
-local inoremap = Remap.inoremap
-
 local status1, lsp = pcall(require, "lsp-zero")
 if not status1 then
   print("lsp-zero not installed")
@@ -65,52 +61,12 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings,
 })
 
-local function setup_mappings(_, bufnr)
-  local opts = { buffer = bufnr, remap = false, silent = true }
-
-  nnoremap("gd", function()
-    vim.lsp.buf.definition()
-  end, opts)
-  nnoremap("gi", function()
-    vim.lsp.buf.implementation()
-  end, opts)
-  nnoremap("<leader>vws", function()
-    vim.lsp.buf.workspace_symbol()
-  end, opts)
-  nnoremap("<leader>vd", function()
-    vim.diagnostic.open_float()
-  end, opts)
-  inoremap("<C-h>", function()
-    vim.lsp.buf.signature_help()
-  end, opts)
-
-  nnoremap("]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-  nnoremap("[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-  nnoremap("K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-  nnoremap("gD", "<Cmd>Lspsaga lsp_finder<CR>", opts)
-  nnoremap("gr", "<Cmd>Lspsaga rename<CR>", opts)
-  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
-end
-
-local opts = { buffer = bufnr, remap = false, silent = true }
-nnoremap("]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-nnoremap("[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-nnoremap("K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-nnoremap("gD", "<Cmd>Lspsaga lsp_finder<CR>", opts)
-nnoremap("gr", "<Cmd>Lspsaga rename<CR>", opts)
-nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
-
--- Keymaps for LSP buffers
--- lsp.on_attach(function(client, bufnr) end)
-lsp.on_attach = setup_mappings
-
 -- Flutter
 require("flutter-tools").setup({
   closing_tags = {
     enabled = true,
     prefix = ">",
   },
-
   lsp = {
     color = {
       enabled = true,
@@ -119,9 +75,6 @@ require("flutter-tools").setup({
       virtual_text = true,
       virtual_text_str = "■",
     },
-
-    on_attach = setup_mappings,
-
     settings = {
       showTodos = false,
     },

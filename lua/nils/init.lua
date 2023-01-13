@@ -1,5 +1,4 @@
 require("nils.set")
-require("nils.packer")
 require("nils.neogit")
 
 local augroup = vim.api.nvim_create_augroup
@@ -20,14 +19,6 @@ autocmd("TextYankPost", {
       higroup = "IncSearch",
       timeout = 40,
     })
-  end,
-})
-
-autocmd({ "BufEnter", "BufWinEnter", "TabEnter" }, {
-  group = NilsGroup,
-  pattern = "*.rs",
-  callback = function()
-    require("lsp_extensions").inlay_hints({})
   end,
 })
 
