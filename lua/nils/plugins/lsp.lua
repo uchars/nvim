@@ -21,6 +21,10 @@ return {
     },
 
     dependencies = {
+      {
+        "folke/trouble.nvim",
+        config = conf.trouble,
+      },
       -- LSP Support
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
@@ -40,7 +44,10 @@ return {
 
       "onsails/lspkind-nvim",
       "glepnir/lspsaga.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = conf.nullls,
+      },
     },
   },
 }
