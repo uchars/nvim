@@ -15,10 +15,10 @@ function conf.nullls()
   end
 
   null_ls.setup({
-    debug = true,
+    -- debug = true,
     sources = {
       null_ls.builtins.formatting.dart_format,
-      null_ls.builtins.formatting.prettierd,
+      null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.diagnostics.fish,
     },
@@ -29,7 +29,7 @@ function conf.nullls()
           group = augroup,
           buffer = bufnr,
           callback = function()
-            lsp_formatting(bufnr)
+            vim.lsp.buf.format({ bufnr = bufnr })
           end,
         })
       end
