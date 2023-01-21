@@ -7,6 +7,7 @@ return {
     ft = {
       "lua",
       "javascriptreact",
+      "python",
       "typescriptreact",
       "javascript",
       "typescript",
