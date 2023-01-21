@@ -36,7 +36,7 @@ function conf.treesitter()
       "gitignore",
       "arduino",
       "make",
-      "php",
+      -- "php",
       "phpdoc",
       "jsdoc",
       "regex",

@@ -3,18 +3,16 @@ local conf = require("nils.configuration.neotest")
 return {
   {
     "nvim-neotest/neotest",
-    ft = {
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
-      "python",
-      "dart",
-    },
+    lazy = false,
+    tag = "v2.6.4",
     dependencies = {
+      "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      "haydenmeade/neotest-jest",
-      -- "marilari88/neotest-vitest",
+      {
+        "haydenmeade/neotest-jest",
+        commit = "a5b924a05737beb461aab2bef39b5dc44bc3fe9a",
+      },
+      "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-python",
       "sidlatau/neotest-dart",
     },

@@ -3,7 +3,7 @@ local conf = require("nils.configuration.treesitter")
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "BufRead",
+    lazy = false,
     run = ":TSUpdate",
     after = "telescope.nvim",
     config = conf.treesitter,
