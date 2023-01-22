@@ -2,7 +2,7 @@ local conf = {}
 local nnoremap = require("nils.keymap").nnoremap
 
 function conf.neotest()
-  nnoremap("<leader>t", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>")
+  nnoremap("<F5>", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>")
   require("neotest").setup({
     adapters = {
       require("neotest-plenary"),
@@ -11,8 +11,12 @@ function conf.neotest()
         use_lsp = false,
       }),
       require("neotest-jest")({
-        jestCommand = "npm test",
+        env = { CI = true },
+        cwd = function(path)
+          return vim.fn.getcwd()
+        end,
       }),
+      require("neotest-vitest"),
       require("neotest-python"),
     },
   })
