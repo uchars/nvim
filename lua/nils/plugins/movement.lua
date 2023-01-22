@@ -1,8 +1,10 @@
 local conf = require("nils.configuration.filetree")
 return {
   "ThePrimeagen/harpoon",
-  "nvim-telescope/telescope.nvim",
-  "farmergreg/vim-lastplace",
+  {
+    "farmergreg/vim-lastplace",
+    event = "BufEnter",
+  },
   {
     "nvim-tree/nvim-tree.lua",
     config = conf.filetree,
