@@ -47,8 +47,14 @@ function conf.treesitter()
       enable = true,
     },
 
-    indent = {
+    yati = {
       enable = true,
+      default_lazy = true,
+      default_fallback = "auto",
+    },
+
+    indent = {
+      enable = false,
       disable = {},
     },
 
