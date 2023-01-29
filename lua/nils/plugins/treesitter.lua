@@ -4,7 +4,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
-    run = ":TSUpdate",
+    -- run = ":TSUpdate",
     after = "telescope.nvim",
     config = conf.treesitter,
     dependencies = {

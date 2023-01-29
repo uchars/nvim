@@ -14,12 +14,6 @@ function conf.neogit()
 end
 
 function conf.gitsigns()
-  -- local ok, diffview = pcall(require, "diffview")
-  -- if not ok then
-  --   print("diffview not installed")
-  --   return
-  -- end
-
   require("gitsigns").setup({
     signs = {
       add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr" },
@@ -47,12 +41,6 @@ function conf.gitsigns()
 
       ["n <space>hd"] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'" },
       ["n <space>hu"] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'" },
-
-      -- ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
-      -- ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
-      -- ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-      -- ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-      -- ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
     },
 
     current_line_blame_opts = {

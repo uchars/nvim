@@ -16,4 +16,11 @@ return {
     event = "UIEnter",
     config = conf.neogit,
   },
+  {
+    "sindrets/diffview.nvim",
+    event = "BufEnter",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 }

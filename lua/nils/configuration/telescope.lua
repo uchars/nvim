@@ -51,6 +51,8 @@ function conf.telescope()
             { "npm start", "lua require('FTerm').scratch({cmd = 'npm start'})" },
             { "Prettier", "Prettier" },
             { "Toggle Indent Lines", "IndentBlanklineToggle" },
+            { "Diffview Open", "DiffviewOpen" },
+            { "Diffview Close", "DiffviewClose" },
           },
         },
       },
