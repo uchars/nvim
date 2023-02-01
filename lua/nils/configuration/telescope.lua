@@ -2,15 +2,10 @@ local conf = {}
 local Remap = require("nils.keymap")
 
 local nnoremap = Remap.nnoremap
-local inoremap = Remap.inoremap
 local tnoremap = Remap.tnoremap
 
 function conf.telescope()
-  local pickers = require("telescope.pickers")
-  local finders = require("telescope.finders")
   local previewers = require("telescope.previewers")
-  local action_state = require("telescope.actions.state")
-  local conf = require("telescope.config").values
   local actions = require("telescope.actions")
 
   nnoremap("<M-p>", "<cmd>Telescope menu<cr>")
@@ -53,6 +48,8 @@ function conf.telescope()
             { "Toggle Indent Lines", "IndentBlanklineToggle" },
             { "Diffview Open", "DiffviewOpen" },
             { "Diffview Close", "DiffviewClose" },
+            { "Flutter Run", "lua require('FTerm').scratch({cmd = 'flutter run'})" },
+            { "Flutter Pub Get", "lua require('FTerm').scratch({cmd = 'flutter pub get'})" },
           },
         },
       },

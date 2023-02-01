@@ -8,6 +8,7 @@ function conf.floatterm()
       width = 0.8,
     },
     cmd = getTerminal(),
+    auto_close = true,
   })
 end
 
