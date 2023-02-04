@@ -50,6 +50,7 @@ function conf.telescope()
             { "Diffview Close", "DiffviewClose" },
             { "Flutter Run", "lua require('FTerm').scratch({cmd = 'flutter run'})" },
             { "Flutter Pub Get", "lua require('FTerm').scratch({cmd = 'flutter pub get'})" },
+            { "Toggle Transparency", "TransparentToggle" },
           },
         },
       },

@@ -2,7 +2,6 @@ local conf = {}
 local Remap = require("nils.keymap")
 
 local nnoremap = Remap.nnoremap
-local inoremap = Remap.inoremap
 
 function conf.trouble()
   require("trouble").setup({
@@ -14,9 +13,6 @@ end
 function conf.nullls()
   local _, null_ls = pcall(require, "null-ls")
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-  local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format()
-  end
 
   null_ls.setup({
     -- debug = true,
@@ -45,6 +41,29 @@ function conf.nullls()
   end, { nargs = 0 })
 end
 
+function conf.lspsaga()
+  require("lspsaga").setup({
+    lightbulb = {
+      enable = false,
+    },
+  })
+
+  local opts = { remap = false, silent = true }
+  nnoremap("<leader>vd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+  nnoremap("]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+  nnoremap("[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+  nnoremap("[E", function()
+    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+  end)
+  nnoremap("]E", function()
+    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+  end)
+  nnoremap("K", "<Cmd>Lspsaga hover_doc<CR>", opts)
+  nnoremap("gD", "<Cmd>Lspsaga lsp_finder<CR>", opts)
+  nnoremap("<leader>gr", "<Cmd>Lspsaga rename<CR>", opts)
+  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
+end
+
 function conf.lspzero()
   local opts = { buffer = bufnr, remap = false, silent = true }
   nnoremap("gd", function()
@@ -56,19 +75,6 @@ function conf.lspzero()
   nnoremap("<leader>vws", function()
     vim.lsp.buf.workspace_symbol()
   end, opts)
-  nnoremap("<leader>vd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
-  nnoremap("]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-  nnoremap("[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-  nnoremap("[E", function()
-    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-  end)
-  nnoremap("]E", function()
-    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-  end)
-  nnoremap("K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-  nnoremap("<leader>gD", "<Cmd>Lspsaga lsp_finder<CR>", opts)
-  nnoremap("<leader>gr", "<Cmd>Lspsaga rename<CR>", opts)
-  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
 
   local status1, lsp = pcall(require, "lsp-zero")
   if not status1 then
@@ -86,12 +92,6 @@ function conf.lspzero()
   local status2, cmp = pcall(require, "cmp")
   if not status2 then
     print("cmp not installed")
-    return
-  end
-
-  local status3, lspsaga = pcall(require, "lspsaga")
-  if not status3 then
-    print("lspsaga not installed")
     return
   end
 
@@ -152,12 +152,6 @@ function conf.lspzero()
       settings = {
         showTodos = false,
       },
-    },
-  })
-
-  lspsaga.setup({
-    lightbulb = {
-      enable = false,
     },
   })
 

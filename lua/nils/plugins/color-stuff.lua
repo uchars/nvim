@@ -1,18 +1,20 @@
-local conf = require("nils.configuration.statusline")
+local statuslineConf = require("nils.configuration.statusline")
+local colorConf = require("nils.configuration.color-stuff")
 
 return {
+  { "ellisonleao/gruvbox.nvim", lazy = false, config = colorConf.gruvbox },
+  { "xiyaowong/nvim-transparent", lazy = false, config = colorConf.transparent },
   { "projekt0n/github-nvim-theme", lazy = false },
-  { "morhetz/gruvbox", lazy = false },
-  { "rebelot/kanagawa.nvim", lazy = false },
-  { "Everblush/everblush.nvim", lazy = false },
-  { "folke/tokyonight.nvim", lazy = false },
-  { "sam4llis/nvim-tundra", lazy = false },
-  { "EdenEast/nightfox.nvim", lazy = false },
+  { "rebelot/kanagawa.nvim", lazy = false, config = colorConf.kanagawa },
+  { "Everblush/everblush.nvim", lazy = false, config = colorConf.everblush },
+  { "folke/tokyonight.nvim", lazy = false, config = colorConf.tokyonight },
+  { "sam4llis/nvim-tundra", lazy = false, config = colorConf.tundra },
+  { "EdenEast/nightfox.nvim", lazy = false, config = colorConf.nightfox },
   "folke/zen-mode.nvim",
   {
     "nvim-lualine/lualine.nvim",
     event = "UIEnter",
-    config = conf.lualine,
+    config = statuslineConf.lualine,
   },
   "norcalli/nvim-colorizer.lua",
 }

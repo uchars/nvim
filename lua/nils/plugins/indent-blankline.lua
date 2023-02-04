@@ -7,6 +7,7 @@ return {
     "javascriptreact",
     "typescriptreact",
     "typescript",
+    "dart",
     "html",
     "json",
   },
