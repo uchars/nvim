@@ -10,11 +10,19 @@ return {
   { "folke/tokyonight.nvim", lazy = false, config = colorConf.tokyonight },
   { "sam4llis/nvim-tundra", lazy = false, config = colorConf.tundra },
   { "EdenEast/nightfox.nvim", lazy = false, config = colorConf.nightfox },
-  "folke/zen-mode.nvim",
+  {
+    "folke/zen-mode.nvim",
+    event = "BufEnter",
+    config = colorConf.zenmode,
+  },
   {
     "nvim-lualine/lualine.nvim",
     event = "UIEnter",
     config = statuslineConf.lualine,
   },
-  "norcalli/nvim-colorizer.lua",
+  {
+    "norcalli/nvim-colorizer.lua",
+    event = "BufEnter",
+    config = colorConf.colorizer,
+  },
 }

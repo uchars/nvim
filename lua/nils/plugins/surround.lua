@@ -1,4 +1,3 @@
-return {
-  "kylechui/nvim-surround",
-  "sbdchd/neoformat",
-}
+local conf = require("nils.configuration.format")
+
+return {}

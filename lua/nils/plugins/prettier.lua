@@ -20,4 +20,10 @@ return {
     },
     config = conf.prettier,
   },
+  {
+    "kylechui/nvim-surround",
+    event = "BufEnter",
+    config = conf.surround,
+  },
+  "sbdchd/neoformat",
 }

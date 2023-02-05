@@ -1,6 +1,10 @@
-local conf = require("nils.configuration.filetree")
+local conf = require("nils.configuration.movement")
 return {
-  "ThePrimeagen/harpoon",
+  {
+    "ThePrimeagen/harpoon",
+    event = "BufEnter",
+    config = conf.harpoon,
+  },
   {
     "farmergreg/vim-lastplace",
     event = "BufEnter",
@@ -8,6 +12,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     config = conf.filetree,
-    event = "UIEnter",
+    -- event = "UIEnter",
+    lazy = false,
   },
 }

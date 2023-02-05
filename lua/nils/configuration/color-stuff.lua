@@ -1,5 +1,16 @@
 local conf = {}
 
+function conf.zenmode()
+  require("zen-mode").setup({})
+end
+
+function conf.colorizer()
+  vim.opt.termguicolors = true
+  require("colorizer").setup({
+    "*",
+  })
+end
+
 function conf.transparent()
   require("transparent").setup({
     enable = true,
