@@ -10,6 +10,9 @@ inoremap("<C-s>", "<ESC>:w<CR>i")
 
 nnoremap("<C-s>", "<ESC>:w<CR>")
 
+inoremap("<F1>", "<nop>")
+nnoremap("<F1>", "<nop>")
+
 nnoremap("<leader>pv", ":Ex<CR>")
 nnoremap("<leader>u", ":UndotreeToggle<CR>")
 
