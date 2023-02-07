@@ -57,4 +57,10 @@ function conf.nightfox()
   })
 end
 
+function conf.vscode()
+  require("vscode").setup({
+    -- yeet
+  })
+end
+
 return conf

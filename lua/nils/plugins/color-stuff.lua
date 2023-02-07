@@ -10,6 +10,8 @@ return {
   { "folke/tokyonight.nvim", lazy = false, config = colorConf.tokyonight },
   { "sam4llis/nvim-tundra", lazy = false, config = colorConf.tundra },
   { "EdenEast/nightfox.nvim", lazy = false, config = colorConf.nightfox },
+  { "junegunn/seoul256.vim", lazy = false },
+  { "Mofiqul/vscode.nvim", lazy = false, config = colorConf.vscode },
   {
     "folke/zen-mode.nvim",
     event = "BufEnter",
