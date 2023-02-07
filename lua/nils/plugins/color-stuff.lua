@@ -4,7 +4,7 @@ local colorConf = require("nils.configuration.color-stuff")
 return {
   { "ellisonleao/gruvbox.nvim", lazy = false, config = colorConf.gruvbox },
   { "xiyaowong/nvim-transparent", lazy = false, config = colorConf.transparent },
-  { "projekt0n/github-nvim-theme", lazy = false },
+  { "projekt0n/github-nvim-theme", lazy = false, config = colorConf.github },
   { "rebelot/kanagawa.nvim", lazy = false, config = colorConf.kanagawa },
   { "Everblush/everblush.nvim", lazy = false, config = colorConf.everblush },
   { "folke/tokyonight.nvim", lazy = false, config = colorConf.tokyonight },

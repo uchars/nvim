@@ -21,6 +21,12 @@ function conf.transparent()
   })
 end
 
+function conf.github()
+  require("github-theme").setup({
+    transparent = true,
+  })
+end
+
 function conf.gruvbox()
   require("gruvbox").setup({
     -- transparent_mode = true,
@@ -59,7 +65,8 @@ end
 
 function conf.vscode()
   require("vscode").setup({
-    -- yeet
+    transparent = true,
+    disable_nvimtree_bg = true,
   })
 end
 
