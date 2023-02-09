@@ -41,29 +41,6 @@ function conf.nullls()
   end, { nargs = 0 })
 end
 
-function conf.lspsaga()
-  require("lspsaga").setup({
-    lightbulb = {
-      enable = false,
-    },
-  })
-
-  local opts = { remap = false, silent = true }
-  nnoremap("<leader>vd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
-  nnoremap("]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-  nnoremap("[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-  nnoremap("[E", function()
-    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-  end)
-  nnoremap("]E", function()
-    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-  end)
-  nnoremap("K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-  nnoremap("gD", "<Cmd>Lspsaga lsp_finder<CR>", opts)
-  nnoremap("<leader>gr", "<Cmd>Lspsaga rename<CR>", opts)
-  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
-end
-
 function conf.lspzero()
   local opts = { buffer = bufnr, remap = false, silent = true }
   nnoremap("gd", function()
@@ -158,6 +135,37 @@ function conf.lspzero()
       },
     },
   })
+
+  nnoremap("gd", function()
+    vim.lsp.buf.definition()
+  end, opts)
+  nnoremap("<leader>vr", function()
+    vim.lsp.buf.references()
+  end, opts)
+  nnoremap("K", function()
+    vim.lsp.buf.hover()
+  end, opts)
+  nnoremap("<leader>vd", function()
+    vim.diagnostic.open_float()
+  end, opts)
+  nnoremap("[e", function()
+    vim.diagnostic.goto_prev()
+  end, opts)
+  nnoremap("]e", function()
+    vim.diagnostic.goto_next()
+  end, opts)
+  nnoremap("[E", function()
+    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+  end)
+  nnoremap("]E", function()
+    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+  end)
+  nnoremap("<leader>vca", function()
+    vim.lsp.buf.code_action()
+  end, opts)
+  nnoremap("<leader>gr", function()
+    vim.lsp.buf.rename()
+  end, opts)
 
   lsp.setup()
 end
