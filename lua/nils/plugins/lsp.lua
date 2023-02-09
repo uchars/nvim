@@ -26,11 +26,9 @@ return {
       { "neovim/nvim-lspconfig" }, -- Required
       {
         "williamboman/mason.nvim",
-        commit = "369d520350b4c1af40630f90c3703444c40c065a",
       }, -- Optional
       {
         "williamboman/mason-lspconfig.nvim",
-        commit = "4674ed145fd0e72c9bfdb32b647f968b221bf2f2",
       }, -- Optional
 
       -- Autocompletion
@@ -45,12 +43,6 @@ return {
       { "L3MON4D3/LuaSnip" }, -- Required
 
       -- Visual stuff
-      {
-        "glepnir/lspsaga.nvim",
-        config = conf.lspsaga,
-        event = "BufEnter",
-        commit = "f4d12606719b1256445922b864fe09974e2f8cee",
-      },
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = conf.nullls,
