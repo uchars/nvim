@@ -18,7 +18,7 @@ function conf.nullls()
     -- debug = true,
     sources = {
       null_ls.builtins.formatting.dart_format,
-      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.diagnostics.fish,
     },
@@ -140,6 +140,10 @@ function conf.lspzero()
     closing_tags = {
       enabled = true,
       prefix = ">",
+    },
+    dev_log = {
+      enabled = true,
+      open_cmd = "tabedit",
     },
     lsp = {
       color = {
