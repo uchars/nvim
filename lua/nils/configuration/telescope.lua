@@ -84,6 +84,8 @@ function conf.telescope()
             { "Toggle Indent Lines", "IndentBlanklineToggle" },
             { "Diffview Open", "DiffviewOpen" },
             { "Diffview Close", "DiffviewClose" },
+            { "Flutter Packages", "lua require('telescope').extensions.pubdev.list()" },
+            { "Flutter", "lua require('telescope').extensions.flutter.commands()" },
             { "Flutter Run", "lua require('FTerm').scratch({cmd = 'flutter run'})" },
             { "Flutter Pub Get", "lua require('FTerm').scratch({cmd = 'flutter pub get'})" },
             { "Toggle Transparency", "TransparentToggle" },
@@ -100,6 +102,8 @@ function conf.telescope()
 
   require("telescope").load_extension("git_worktree")
   require("telescope").load_extension("menu")
+  require("telescope").load_extension("flutter")
+  require("telescope").load_extension("pubdev")
 end
 
 return conf

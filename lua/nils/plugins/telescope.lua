@@ -5,6 +5,8 @@ return {
   event = "UIEnter",
   dependencies = {
     "octarect/telescope-menu.nvim",
+    "uchars/telescope-pubdev.nvim",
+    -- { dir = "~/telescope-pubdev.nvim/" },
   },
   config = conf.telescope,
 }
