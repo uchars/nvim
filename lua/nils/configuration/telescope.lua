@@ -68,6 +68,8 @@ function conf.telescope()
       menu = {
         default = {
           items = {
+            { "Flutter Packages", "lua require('telescope').extensions.pubdev.list()" },
+            { "Flutter", "lua require('telescope').extensions.flutter.commands()" },
             { "Checkhealth", "checkhealth" },
             { "Neogit", "Neogit" },
             { "Files", "Telescope find_files" },
@@ -84,10 +86,10 @@ function conf.telescope()
             { "Toggle Indent Lines", "IndentBlanklineToggle" },
             { "Diffview Open", "DiffviewOpen" },
             { "Diffview Close", "DiffviewClose" },
-            { "Flutter Packages", "lua require('telescope').extensions.pubdev.list()" },
-            { "Flutter", "lua require('telescope').extensions.flutter.commands()" },
             { "Toggle Transparency", "TransparentToggle" },
             { "LSP Restart", "LspRestart" },
+            { "Remove all // comments", "%s/\\/\\/.*//g" },
+            { "Remove all # comments", "%s/#.*//g" },
           },
         },
       },
