@@ -104,7 +104,6 @@ function conf.telescope()
   require("telescope").load_extension("git_worktree")
   require("telescope").load_extension("menu")
   require("telescope").load_extension("flutter")
-  require("telescope").load_extension("pubdev")
 end
 
 return conf
