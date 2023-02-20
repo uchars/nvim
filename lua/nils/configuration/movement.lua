@@ -3,7 +3,18 @@ local Remap = require("nils.keymap")
 local nnoremap = Remap.nnoremap
 
 function conf.filetree()
-  require("nvim-tree").setup({})
+  require("nvim-tree").setup({
+    view = {
+      adaptive_size = true,
+    },
+    diagnostics = {
+      enable = true,
+      show_on_dirs = true,
+    },
+    log = {
+      enable = false,
+    },
+  })
   nnoremap("<C-b>", ":NvimTreeToggle<CR>", { silent = true })
 end
 

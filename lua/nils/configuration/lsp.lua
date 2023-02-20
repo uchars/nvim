@@ -17,10 +17,9 @@ function conf.nullls()
   null_ls.setup({
     -- debug = true,
     sources = {
+      null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.dart_format,
       null_ls.builtins.formatting.prettierd,
-      null_ls.builtins.formatting.stylua,
-      null_ls.builtins.diagnostics.fish,
     },
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
@@ -62,7 +61,6 @@ function conf.lspzero()
   lsp.preset("recommended")
   lsp.ensure_installed({
     "tsserver",
-    "sumneko_lua",
     "marksman",
   })
 
@@ -105,7 +103,7 @@ function conf.lspzero()
     ["<C-e>"] = cmp.mapping.abort(),
     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-q>"] = cmp.mapping.complete(),
   })
 
   lsp.setup_nvim_cmp({
@@ -123,13 +121,6 @@ function conf.lspzero()
       open_cmd = "tabedit",
     },
     lsp = {
-      color = {
-        enabled = true,
-        background = false,
-        foreground = false,
-        virtual_text = true,
-        virtual_text_str = "■",
-      },
       settings = {
         showTodos = false,
       },

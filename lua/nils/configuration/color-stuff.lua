@@ -13,7 +13,6 @@ end
 
 function conf.transparent()
   require("transparent").setup({
-    enable = true,
     extra_groups = {
       "TelescopeNormal",
       "TelescopePrompt",
@@ -22,9 +21,7 @@ function conf.transparent()
 end
 
 function conf.github()
-  require("github-theme").setup({
-    transparent = true,
-  })
+  require("github-theme").setup({})
 end
 
 function conf.gruvbox()
@@ -65,7 +62,6 @@ end
 
 function conf.vscode()
   require("vscode").setup({
-    transparent = true,
     disable_nvimtree_bg = true,
   })
 end

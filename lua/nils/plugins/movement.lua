@@ -12,7 +12,6 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     config = conf.filetree,
-    -- event = "UIEnter",
     lazy = false,
   },
 }

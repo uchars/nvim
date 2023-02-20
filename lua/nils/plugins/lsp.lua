@@ -1,26 +1,10 @@
 local conf = require("nils.configuration.lsp")
 
-local lsp_filetype = {
-  "typescript",
-  "typescriptreact",
-  "javascriptreact",
-  "javascript",
-  "dart",
-  "html",
-  "css",
-  "c",
-  "sh",
-  "lua",
-  "markdown",
-  "dockerfile",
-  "yaml",
-}
-
 return {
   {
     "VonHeikemen/lsp-zero.nvim",
     config = conf.lspzero,
-    ft = lsp_filetype,
+    lazy = false,
     dependencies = {
       -- LSP Support
       { "neovim/nvim-lspconfig" }, -- Required
