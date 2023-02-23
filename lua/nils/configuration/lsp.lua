@@ -62,6 +62,10 @@ function conf.lspzero()
   lsp.ensure_installed({
     "tsserver",
     "marksman",
+    "lua_ls",
+    "jsonls",
+    "cssls",
+    "pyright",
   })
 
   local status2, cmp = pcall(require, "cmp")

@@ -14,7 +14,6 @@ local download_lazy = function()
   })
   vim.opt.rtp:prepend(lazypath)
 
-  print(out)
   print("Downloading lazy.nvim...")
   print("( You'll need to restart now )")
   vim.cmd([[qa]])
