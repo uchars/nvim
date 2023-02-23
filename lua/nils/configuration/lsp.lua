@@ -15,7 +15,7 @@ function conf.nullls()
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
   null_ls.setup({
-    -- debug = true,
+    debug = true,
     sources = {
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.dart_format,
@@ -101,7 +101,7 @@ function conf.lspzero()
     end, { "i", "s" }),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-u>"] = cmp.mapping.scroll_docs( -4),
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-q>"] = cmp.mapping.complete(),
   })
