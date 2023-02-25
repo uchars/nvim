@@ -66,4 +66,8 @@ function conf.vscode()
   })
 end
 
+function conf.catppuccin()
+  require("catppuccin").setup({})
+end
+
 return conf
