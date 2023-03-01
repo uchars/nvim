@@ -10,6 +10,13 @@ function R(name)
   require("plenary.reload").reload_module(name)
 end
 
+autocmd("BufWritePost", {
+  pattern = "*.arb",
+  callback = function()
+    vim.fn.jobstart("flutter gen-l10n")
+  end,
+})
+
 autocmd("TextYankPost", {
   group = yank_group,
   pattern = "*",
