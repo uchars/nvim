@@ -3,6 +3,14 @@ local Remap = require("nils.keymap")
 
 local nnoremap = Remap.nnoremap
 
+function conf.lspsaga()
+  require("lspsaga").setup({
+    lightbulb = {
+      enable = false,
+    },
+  })
+end
+
 function conf.trouble()
   require("trouble").setup({
     auto_preview = false,
@@ -131,36 +139,25 @@ function conf.lspzero()
     },
   })
 
-  nnoremap("gd", function()
-    vim.lsp.buf.definition()
-  end, opts)
-  nnoremap("<leader>vr", function()
-    vim.lsp.buf.references()
-  end, opts)
-  nnoremap("K", function()
-    vim.lsp.buf.hover()
-  end, opts)
+  nnoremap("gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+  nnoremap("gD", "<cmd>Lspsaga goto_definition<CR>", opts)
+  nnoremap("gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+  nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", opts)
   nnoremap("<leader>vd", function()
     vim.diagnostic.open_float()
   end, opts)
-  nnoremap("[e", function()
-    vim.diagnostic.goto_prev()
-  end, opts)
-  nnoremap("]e", function()
-    vim.diagnostic.goto_next()
-  end, opts)
+  nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+  nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
   nnoremap("[E", function()
-    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
   end)
   nnoremap("]E", function()
-    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
   end)
-  nnoremap("<leader>vca", function()
-    vim.lsp.buf.code_action()
-  end, opts)
-  nnoremap("<leader>gr", function()
-    vim.lsp.buf.rename()
-  end, opts)
+  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
+  nnoremap("<leader>gr", "<cmd>Lspsaga rename<CR>", opts)
+
+  require("luasnip.loaders.from_vscode").lazy_load()
 
   lsp.setup()
 end

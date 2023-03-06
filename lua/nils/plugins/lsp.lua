@@ -25,6 +25,7 @@ return {
 
       -- Snippets
       { "L3MON4D3/LuaSnip" }, -- Required
+      { "rafamadriz/friendly-snippets" },
 
       -- Visual stuff
       {
@@ -34,6 +35,16 @@ return {
       {
         "folke/trouble.nvim",
         config = conf.trouble,
+      },
+      {
+        "glepnir/lspsaga.nvim",
+        event = "BufRead",
+        config = conf.lspsaga,
+        dependencies = {
+          { "nvim-tree/nvim-web-devicons" },
+          --Please make sure you install markdown and markdown_inline parser
+          { "nvim-treesitter/nvim-treesitter" },
+        },
       },
     },
   },

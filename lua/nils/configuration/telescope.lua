@@ -81,7 +81,7 @@ function conf.telescope()
             { "Open Floating Terminal",   "lua require('FTerm').open()" },
             { "Close Floating Terminal",  "lua require('FTerm').close()" },
             { "npm install",              "lua require('FTerm').scratch({cmd = 'npm i'})" },
-            { "npm start",                "lua require('FTerm').scratch({cmd = 'npm start'})" },
+            { "npm start",                "tabnew npm start | term npm start" },
             { "Prettier",                 "Prettier" },
             { "Toggle Indent Lines",      "IndentBlanklineToggle" },
             { "Diffview Open",            "DiffviewOpen" },

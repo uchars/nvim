@@ -1,12 +1,6 @@
 local conf = {}
 
 function conf.treesitter()
-  -- local ok, treesitter_install = pcall(require, "nvim-treesitter.install")
-  -- if not ok then
-  --   print("treesitter not installed")
-  --   return
-  -- end
-
   require("nvim-treesitter.install").compilers = { "clang" }
 
   require("nvim-treesitter.configs").setup({
@@ -24,6 +18,7 @@ function conf.treesitter()
       "json",
       "json5",
       "markdown",
+      "markdown_inline",
       "python",
       "rust",
       "scss",
@@ -42,24 +37,19 @@ function conf.treesitter()
       "regex",
       "yaml",
     },
-
     autotag = {
       enable = true,
     },
-
     yati = {
       enable = true,
       default_lazy = true,
       default_fallback = "auto",
     },
-
     indent = {
       enable = false,
       disable = {},
     },
-
     sync_install = false,
-
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,
