@@ -1,11 +1,7 @@
 local conf = {}
 
 function conf.lualine()
-  local sections = { lualine_a = { hello } }
-
-  require("lualine").setup({
-    sections = sections,
-  })
+  require("lualine").setup({})
 end
 
 return conf
