@@ -52,15 +52,13 @@ function conf.telescope()
       file_sorter = require("telescope.sorters").get_fzy_sorter,
       prompt_prefix = " >",
       color_devicons = true,
-
       file_previewer = previewers.vim_buffer_cat.new,
       grep_previewer = previewers.vim_buffer_vimgrep.new,
       qflist_previewer = previewers.vim_buffer_qflist.new,
-
       mappings = {
         i = {
-          ["<C-x>"] = false,
-          ["<C-q>"] = actions.send_to_qflist,
+              ["<C-x>"] = false,
+              ["<C-q>"] = actions.send_to_qflist,
         },
       },
     },
@@ -94,14 +92,14 @@ function conf.telescope()
             { "Lazy",                     "Lazy" },
             { "Package Manager",          "Lazy" },
             { "Show Undo Tree",           "UndotreeToggle" },
+            { "Copilot disable",          "Copilot disable" },
+            { "Copilot enable",           "Copilot enable" },
+            { "Copilot restart",          "Copilot restart" },
           },
         },
       },
     },
     pickers = {
-      find_files = {
-        -- theme = "ivy"
-      },
       colorscheme = {
         enable_preview = true,
       },
