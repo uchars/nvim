@@ -9,5 +9,6 @@ return {
     "lewis6991/gitsigns.nvim",
     "sindrets/diffview.nvim",
     "nvim-lua/plenary.nvim",
+    "f-person/git-blame.nvim",
   },
 }
