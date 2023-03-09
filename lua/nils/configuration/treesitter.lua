@@ -16,6 +16,7 @@ function conf.treesitter()
       "html",
       "javascript",
       "json",
+      "jsonc",
       "json5",
       "markdown",
       "markdown_inline",

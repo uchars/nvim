@@ -2,11 +2,6 @@ local conf = {}
 local Remap = require("nils.keymap")
 local nnoremap = Remap.nnoremap
 
-local function open_nvim_tree()
-  -- open the tree
-  require("nvim-tree.api").tree.open()
-end
-
 function conf.filetree()
   require("nvim-tree").setup({
     view = {
@@ -18,8 +13,6 @@ function conf.filetree()
     },
   })
   nnoremap("<C-b>", ":NvimTreeToggle<CR>", { silent = true })
-
-  vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 end
 
 function conf.harpoon()

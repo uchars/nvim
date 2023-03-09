@@ -36,14 +36,6 @@ function conf.telescope()
     require("telescope.builtin").git_branches()
   end)
 
-  nnoremap("<leader>gw", function()
-    require("telescope").extensions.git_worktree.git_worktrees()
-  end)
-
-  nnoremap("<leader>gm", function()
-    require("telescope").extensions.git_worktree.create_git_worktree()
-  end)
-
   nnoremap("<M-p>", "<cmd>Telescope menu<cr>")
   tnoremap("<M-p>", "<cmd>Telescope menu<cr>")
 
@@ -69,7 +61,6 @@ function conf.telescope()
             { "Flutter Packages",         "lua require('telescope').extensions.pubdev.list()" },
             { "Flutter",                  "lua require('telescope').extensions.flutter.commands()" },
             { "Checkhealth",              "checkhealth" },
-            { "Neogit",                   "Neogit" },
             { "Files",                    "Telescope find_files" },
             { "Run Tests",                "lua require('neotest').run.run(vim.fn.expand('%'))" },
             { "Zen Mode Enable/Disable",  "ZenMode" },
@@ -106,9 +97,7 @@ function conf.telescope()
     },
   })
 
-  require("telescope").load_extension("git_worktree")
   require("telescope").load_extension("menu")
-  require("telescope").load_extension("flutter")
 end
 
 return conf

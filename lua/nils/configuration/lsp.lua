@@ -18,6 +18,14 @@ function conf.trouble()
   })
 end
 
+function conf.lsp_lines()
+  require("lsp_lines").setup()
+  vim.diagnostic.config({
+    virtual_text = false,
+    virtual_lines = { only_current_line = true },
+  })
+end
+
 function conf.nullls()
   local _, null_ls = pcall(require, "null-ls")
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -28,6 +36,7 @@ function conf.nullls()
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.dart_format,
       null_ls.builtins.formatting.prettierd,
+      null_ls.builtins.formatting.rustfmt,
     },
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
@@ -50,21 +59,8 @@ end
 
 function conf.lspzero()
   local opts = { buffer = bufnr, remap = false, silent = true }
-  nnoremap("gd", function()
-    vim.lsp.buf.definition()
-  end, opts)
-  nnoremap("gi", function()
-    vim.lsp.buf.implementation()
-  end, opts)
-  nnoremap("<leader>vws", function()
-    vim.lsp.buf.workspace_symbol()
-  end, opts)
-
-  local status1, lsp = pcall(require, "lsp-zero")
-  if not status1 then
-    print("lsp-zero not installed")
-    return
-  end
+  vim.g.cmp_buftype_blacklist = { ["<buffer>"] = true }
+  local lsp = require("lsp-zero")
 
   lsp.preset("recommended")
   lsp.ensure_installed({
@@ -76,26 +72,15 @@ function conf.lspzero()
     "pyright",
   })
 
-  local status2, cmp = pcall(require, "cmp")
-  if not status2 then
-    print("cmp not installed")
-    return
-  end
-
-  local has_flutter_tools = pcall(require, "flutter-tools")
-  if not has_flutter_tools then
-    print("flutter-tools not installed")
-    return
-  end
+  local cmp = require("cmp")
 
   local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
 
-  local cmp_select = { behavior = cmp.SelectBehavior.Select }
   local cmp_mappings = lsp.defaults.cmp_mappings({
-    ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif has_words_before() then
@@ -104,39 +89,22 @@ function conf.lspzero()
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       else
         fallback()
       end
     end, { "i", "s" }),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    ["<C-e>"] = cmp.mapping.abort(),
-    ["<C-u>"] = cmp.mapping.scroll_docs( -4),
-    ["<C-d>"] = cmp.mapping.scroll_docs(4),
-    ["<C-q>"] = cmp.mapping.complete(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        ["<C-q>"] = cmp.mapping.complete(),
   })
 
   lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
-  })
-
-  -- Flutter
-  require("flutter-tools").setup({
-    closing_tags = {
-      enabled = true,
-      prefix = ">",
-    },
-    dev_log = {
-      enabled = true,
-      open_cmd = "tabedit",
-    },
-    lsp = {
-      settings = {
-        showTodos = false,
-      },
-    },
   })
 
   nnoremap("gd", "<cmd>Lspsaga peek_definition<CR>", opts)

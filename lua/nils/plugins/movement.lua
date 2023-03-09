@@ -14,4 +14,8 @@ return {
     config = conf.filetree,
     lazy = false,
   },
+  {
+    "mbbill/undotree",
+    event = "BufEnter",
+  },
 }

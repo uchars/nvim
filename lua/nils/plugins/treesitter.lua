@@ -16,7 +16,6 @@ return {
     config = conf.treesittercontext,
   },
   {
-
     "windwp/nvim-ts-autotag",
     after = "nvim-treesitter",
     config = conf.autotag,

@@ -1,3 +1,9 @@
 local conf = require("nils.configuration.format")
 
-return {}
+return {
+  {
+    "kylechui/nvim-surround",
+    event = "BufEnter",
+    config = conf.surround,
+  },
+}

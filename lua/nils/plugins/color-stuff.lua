@@ -14,7 +14,7 @@ return {
   { "catppuccin/nvim",             lazy = false, config = colorConf.catppuccin },
   {
     "folke/zen-mode.nvim",
-    event = "BufEnter",
+    event = "VeryLazy",
     config = colorConf.zenmode,
   },
   {
@@ -24,7 +24,12 @@ return {
   },
   {
     "norcalli/nvim-colorizer.lua",
-    event = "BufEnter",
+    event = "VeryLazy",
     config = colorConf.colorizer,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = colorConf.todo,
   },
 }

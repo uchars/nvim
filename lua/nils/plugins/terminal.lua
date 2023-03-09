@@ -2,6 +2,6 @@ local conf = require("nils.configuration.terminal")
 
 return {
   "numToStr/FTerm.nvim",
-  event = "UIEnter",
+  event = "VeryLazy",
   config = conf.floatterm,
 }

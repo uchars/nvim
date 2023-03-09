@@ -10,6 +10,8 @@ function R(name)
   require("plenary.reload").reload_module(name)
 end
 
+vim.cmd([[autocmd FileType * setlocal formatoptions-=cro]])
+
 autocmd("BufWritePost", {
   pattern = "*.arb",
   callback = function()
