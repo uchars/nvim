@@ -8,6 +8,10 @@ function conf.lspsaga()
     lightbulb = {
       enable = false,
     },
+    diagnostic = {
+      on_insert = false,
+      show_virt_line = false,
+    },
   })
 end
 

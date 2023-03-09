@@ -18,6 +18,7 @@ return {
   {
     "windwp/nvim-ts-autotag",
     after = "nvim-treesitter",
+    ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue" },
     config = conf.autotag,
   },
 }
