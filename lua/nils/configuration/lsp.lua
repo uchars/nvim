@@ -12,6 +12,12 @@ function conf.lspsaga()
       on_insert = false,
       show_virt_line = false,
     },
+    outline = {
+      auto_preview = true,
+      keys = {
+        jump = "<CR>",
+      },
+    },
   })
 end
 

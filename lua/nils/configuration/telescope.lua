@@ -89,6 +89,7 @@ function conf.telescope()
             { "Toggle Spell check",           "set spell!" },
             { "Open Blame Commit in Browser", "GitBlameOpenCommitURL" },
             { "Toggle Git Blame",             "GitBlameToggle" },
+            { "Toggle Outline",               "Lspsaga outline" },
           },
         },
       },
