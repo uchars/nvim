@@ -90,6 +90,8 @@ function conf.telescope()
             { "Open Blame Commit in Browser", "GitBlameOpenCommitURL" },
             { "Toggle Git Blame",             "GitBlameToggle" },
             { "Toggle Outline",               "Lspsaga outline" },
+            { "Refresh Colorizer",            "ColorizerReloadAllBuffers" },
+            { "Toggle Colorizer",             "ColorizerToggle" },
           },
         },
       },

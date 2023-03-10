@@ -24,7 +24,7 @@ return {
   },
   {
     "norcalli/nvim-colorizer.lua",
-    event = "VeryLazy",
+    event = "BufEnter",
     config = colorConf.colorizer,
   },
   {
