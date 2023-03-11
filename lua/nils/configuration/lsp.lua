@@ -10,7 +10,7 @@ function conf.lspsaga()
     },
     diagnostic = {
       on_insert = false,
-      show_virt_line = false,
+      show_code_action = false,
     },
     outline = {
       auto_preview = true,
@@ -25,14 +25,6 @@ function conf.trouble()
   require("trouble").setup({
     auto_preview = false,
     auto_fold = true,
-  })
-end
-
-function conf.lsp_lines()
-  require("lsp_lines").setup()
-  vim.diagnostic.config({
-    virtual_text = false,
-    virtual_lines = { only_current_line = true },
   })
 end
 
@@ -123,23 +115,57 @@ function conf.lspzero()
   end, opts)
   nnoremap("gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
   nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", opts)
-  nnoremap("<leader>vd", function()
-    vim.diagnostic.open_float()
+  nnoremap("<leader>vd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+  nnoremap("[e", function()
+    vim.diagnostic.goto_prev({
+      float = false,
+    })
   end, opts)
-  nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-  nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+  nnoremap("]e", function()
+    vim.diagnostic.goto_next({
+      float = false,
+    })
+  end, opts)
   nnoremap("[E", function()
-    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    vim.diagnostic.goto_prev({
+      severity = vim.diagnostic.severity.ERROR,
+      float = false,
+    })
   end)
   nnoremap("]E", function()
-    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    vim.diagnostic.goto_next({
+      severity = vim.diagnostic.severity.ERROR,
+      float = false,
+    })
   end)
+  nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
   nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
   nnoremap("<leader>gr", "<cmd>Lspsaga rename<CR>", opts)
 
   require("luasnip.loaders.from_vscode").lazy_load()
 
   lsp.setup()
+
+  local signs = {
+    Error = " ",
+    Warn = " ",
+    Info = " ",
+    Hint = " ",
+  }
+  for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  end
+
+  vim.diagnostic.config({
+    signs = true,
+    severity_sort = true,
+    float = false,
+    virtual_text = {
+      prefix = "🔥",
+      source = false,
+    },
+  })
 end
 
 return conf
