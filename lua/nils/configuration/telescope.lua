@@ -1,3 +1,4 @@
+local Path = require("plenary.path")
 local conf = {}
 local Remap = require("nils.keymap")
 
@@ -38,6 +39,13 @@ function conf.telescope()
 
   nnoremap("<M-p>", "<cmd>Telescope menu<cr>")
   tnoremap("<M-p>", "<cmd>Telescope menu<cr>")
+
+  local autocmd = vim.api.nvim_create_autocmd
+  autocmd("ColorScheme", {
+    callback = function()
+      Path:new(vim.fn.stdpath("data") .. "/colorscheme.txt"):write(vim.g.colors_name, "w")
+    end,
+  })
 
   require("telescope").setup({
     defaults = {
