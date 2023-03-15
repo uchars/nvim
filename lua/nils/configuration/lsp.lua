@@ -72,6 +72,8 @@ function conf.lspzero()
     "jsonls",
     "cssls",
     "pyright",
+    "dockerls",
+    "vimls",
   })
 
   local cmp = require("cmp")
@@ -82,7 +84,7 @@ function conf.lspzero()
   end
 
   local cmp_mappings = lsp.defaults.cmp_mappings({
-        ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif has_words_before() then
@@ -91,18 +93,18 @@ function conf.lspzero()
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
     end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       else
         fallback()
       end
     end, { "i", "s" }),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-q>"] = cmp.mapping.complete(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+    ["<C-q>"] = cmp.mapping.complete(),
   })
 
   lsp.setup_nvim_cmp({
