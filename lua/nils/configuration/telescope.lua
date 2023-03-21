@@ -40,34 +40,29 @@ function conf.telescope()
   nnoremap("<M-p>", "<cmd>Telescope menu<cr>")
   tnoremap("<M-p>", "<cmd>Telescope menu<cr>")
 
-  local function getConfig()
-    local config_path = vim.fn.stdpath("data") .. "/config.json"
-    local config_json = {}
-    if Path:new(config_path):exists() then
-      local config_content = Path:new(config_path):read()
-      config_json = vim.fn.json_decode(config_content)
-    end
-    return config_json
+  local config_path = vim.fn.stdpath("data") .. "/config.json"
+
+  -- Cache the parsed configuration data
+  local config_json = Path:new(config_path):exists() and vim.fn.json_decode(Path:new(config_path):read()) or {}
+
+  local function write_config(config)
+    Path:new(config_path):write(vim.fn.json_encode(config), "w")
   end
 
-  local function writeConfig(config)
-    Path:new(vim.fn.stdpath("data") .. "/config.json"):write(vim.fn.json_encode(config), "w")
+  local function update_config()
+    config_json.colorscheme = vim.g.colors_name
+    config_json.transparency = vim.g.transparent_enabled
+    write_config(config_json)
   end
 
   local autocmd = vim.api.nvim_create_autocmd
   autocmd("ColorScheme", {
-    callback = function()
-      local config = getConfig()
-      config.colorscheme = vim.g.colors_name
-      writeConfig(config)
-    end,
+    callback = update_config,
   })
 
   function TransparentToggle()
     vim.cmd("TransparentToggle")
-    local config = getConfig()
-    config.transparency = vim.g.transparent_enabled
-    writeConfig(config)
+    update_config()
   end
 
   require("telescope").setup({

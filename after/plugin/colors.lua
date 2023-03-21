@@ -1,3 +1,4 @@
+-- Import dependencies
 local Path = require("plenary.path")
 
 local config = {
@@ -6,18 +7,21 @@ local config = {
 }
 
 local config_path = vim.fn.stdpath("data") .. "/config.json"
-if Path:new(config_path):exists() then
-  local config_json = vim.fn.json_decode(Path:new(config_path):read()) -- read config json
-  -- merge config tables
-  for k, v in pairs(config_json) do
-    config[k] = v
-  end
+
+local config_file = Path:new(config_path)
+
+-- If configuration file exists, read and merge with default configuration
+if config_file:exists() then
+  local config_json = vim.fn.json_decode(config_file:read())
+  config = vim.tbl_extend("force", config, config_json)
+  print(config.colorscheme)
 else
-  Path:new(config_path):write(vim.fn.json_encode(config), "w") -- write config if file not exists
+  config_file:write(vim.fn.json_encode(config), "w")
 end
 
+-- Apply configuration
 vim.cmd.colorscheme(config.colorscheme) -- set colorscheme
-if config.transparency == true then
+if config.transparency then
   vim.cmd("TransparentEnable")          -- set transparency
 end
 vim.opt.termguicolors = true
