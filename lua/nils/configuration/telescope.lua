@@ -42,11 +42,13 @@ function conf.telescope()
 
   local config_path = vim.fn.stdpath("data") .. "/config.json"
 
+  local config_file = Path:new(config_path)
+
   -- Cache the parsed configuration data
-  local config_json = Path:new(config_path):exists() and vim.fn.json_decode(Path:new(config_path):read()) or {}
+  local config_json = config_file:exists() and vim.fn.json_decode(config_file:read()) or {}
 
   local function write_config(config)
-    Path:new(config_path):write(vim.fn.json_encode(config), "w")
+    config_file:write(vim.fn.json_encode(config), "w")
   end
 
   local function update_config()
