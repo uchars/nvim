@@ -40,12 +40,32 @@ function conf.telescope()
   nnoremap("<M-p>", "<cmd>Telescope menu<cr>")
   tnoremap("<M-p>", "<cmd>Telescope menu<cr>")
 
+  local config_path = vim.fn.stdpath("data") .. "/config.json"
+
+  local config_file = Path:new(config_path)
+
+  -- Cache the parsed configuration data
+  local config_json = config_file:exists() and vim.fn.json_decode(config_file:read()) or {}
+
+  local function write_config(config)
+    config_file:write(vim.fn.json_encode(config), "w")
+  end
+
+  local function update_config()
+    config_json.colorscheme = vim.g.colors_name
+    config_json.transparency = vim.g.transparent_enabled
+    write_config(config_json)
+  end
+
   local autocmd = vim.api.nvim_create_autocmd
   autocmd("ColorScheme", {
-    callback = function()
-      Path:new(vim.fn.stdpath("data") .. "/colorscheme.txt"):write(vim.g.colors_name, "w")
-    end,
+    callback = update_config,
   })
+
+  function TransparentToggle()
+    vim.cmd("TransparentToggle")
+    update_config()
+  end
 
   require("telescope").setup({
     defaults = {
@@ -66,24 +86,29 @@ function conf.telescope()
       menu = {
         default = {
           items = {
-            { "Flutter Packages",             "lua require('telescope').extensions.pubdev.list()" },
-            { "Flutter",                      "lua require('telescope').extensions.flutter.commands()" },
-            { "Checkhealth",                  "checkhealth" },
-            { "Files",                        "Telescope find_files" },
-            { "Run Tests",                    "lua require('neotest').run.run(vim.fn.expand('%'))" },
-            { "Zen Mode Enable/Disable",      "ZenMode" },
-            { "Change Colorscheme",           "Telescope colorscheme" },
-            { "Markdown Preview",             "MarkdownPreviewToggle" },
-            { "Toggle Floating Terminal",     "lua require('FTerm').toggle()" },
-            { "Open Floating Terminal",       "lua require('FTerm').open()" },
-            { "Close Floating Terminal",      "lua require('FTerm').close()" },
-            { "npm install",                  "lua require('FTerm').scratch({cmd = 'npm i'})" },
-            { "npm start",                    "tabnew npm start | term npm start" },
-            { "Prettier",                     "Prettier" },
-            { "Toggle Indent Lines",          "IndentBlanklineToggle" },
-            { "Diffview Open",                "DiffviewOpen" },
-            { "Diffview Close",               "DiffviewClose" },
-            { "Toggle Transparency",          "TransparentToggle" },
+            { "Flutter Packages",         "lua require('telescope').extensions.pubdev.list()" },
+            { "Flutter",                  "lua require('telescope').extensions.flutter.commands()" },
+            { "Checkhealth",              "checkhealth" },
+            { "Files",                    "Telescope find_files" },
+            { "Run Tests",                "lua require('neotest').run.run(vim.fn.expand('%'))" },
+            { "Zen Mode Enable/Disable",  "ZenMode" },
+            { "Change Colorscheme",       "Telescope colorscheme" },
+            { "Markdown Preview",         "MarkdownPreviewToggle" },
+            { "Toggle Floating Terminal", "lua require('FTerm').toggle()" },
+            { "Open Floating Terminal",   "lua require('FTerm').open()" },
+            { "Close Floating Terminal",  "lua require('FTerm').close()" },
+            { "npm install",              "lua require('FTerm').scratch({cmd = 'npm i'})" },
+            { "npm start",                "tabnew npm start | term npm start" },
+            { "Prettier",                 "Prettier" },
+            { "Toggle Indent Lines",      "IndentBlanklineToggle" },
+            { "Diffview Open",            "DiffviewOpen" },
+            { "Diffview Close",           "DiffviewClose" },
+            {
+              "Toggle Transparency",
+              function()
+                TransparentToggle()
+              end,
+            },
             { "LSP Restart",                  "LspRestart" },
             { "Remove all // comments",       "%s/\\/\\/.*//g" },
             { "Remove all # comments",        "%s/#.*//g" },
