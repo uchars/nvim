@@ -12,6 +12,7 @@ return {
   },
   {
     "romgrk/nvim-treesitter-context",
+    event = "BufEnter",
     after = "nvim-treesitter",
     config = conf.treesittercontext,
   },
