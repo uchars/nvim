@@ -77,8 +77,8 @@ function conf.telescope()
       qflist_previewer = previewers.vim_buffer_qflist.new,
       mappings = {
         i = {
-              ["<C-x>"] = false,
-              ["<C-q>"] = actions.send_to_qflist,
+          ["<C-x>"] = false,
+          ["<C-q>"] = actions.send_to_qflist,
         },
       },
     },
@@ -109,6 +109,7 @@ function conf.telescope()
                 TransparentToggle()
               end,
             },
+            { "Toggle Treesitter Context",    "TSContextToggle" },
             { "LSP Restart",                  "LspRestart" },
             { "Remove all // comments",       "%s/\\/\\/.*//g" },
             { "Remove all # comments",        "%s/#.*//g" },
