@@ -4,7 +4,7 @@ return {
   {
     "VonHeikemen/lsp-zero.nvim",
     config = conf.lspzero,
-    lazy = false,
+    event = "BufReadPre",
     dependencies = {
       -- LSP Support
       { "neovim/nvim-lspconfig" }, -- Required
@@ -38,7 +38,7 @@ return {
       },
       {
         "glepnir/lspsaga.nvim",
-        event = "BufRead",
+        event = "LspAttach",
         config = conf.lspsaga,
         dependencies = {
           { "nvim-tree/nvim-web-devicons" },

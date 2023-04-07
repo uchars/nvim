@@ -60,7 +60,11 @@ function conf.nullls()
 end
 
 function conf.lspzero()
-  local opts = { buffer = bufnr, remap = false, silent = true }
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
+
   vim.g.cmp_buftype_blacklist = { ["<buffer>"] = true }
   local lsp = require("lsp-zero")
 
@@ -77,16 +81,12 @@ function conf.lspzero()
   })
 
   local cmp = require("cmp")
-
-  local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-  end
+  local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
   local cmp_mappings = lsp.defaults.cmp_mappings({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        cmp.select_next_item(cmp_select)
       elseif has_words_before() then
         cmp.complete()
       else
@@ -95,7 +95,7 @@ function conf.lspzero()
     end, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_prev_item()
+        cmp.select_prev_item(cmp_select)
       else
         fallback()
       end
@@ -111,60 +111,58 @@ function conf.lspzero()
     mapping = cmp_mappings,
   })
 
-  nnoremap("gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-  nnoremap("gD", function()
-    vim.lsp.buf.definition()
-  end, opts)
-  nnoremap("gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
-  nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", opts)
-  nnoremap("<leader>vd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-  nnoremap("[e", function()
-    vim.diagnostic.goto_prev({
-      float = false,
-    })
-  end, opts)
-  nnoremap("]e", function()
-    vim.diagnostic.goto_next({
-      float = false,
-    })
-  end, opts)
-  nnoremap("[E", function()
-    vim.diagnostic.goto_prev({
-      severity = vim.diagnostic.severity.ERROR,
-      float = false,
-    })
+  lsp.set_sign_icons({
+    error = "✘",
+    warn = "▲",
+    hint = "⚑",
+    info = "»",
+  })
+
+  lsp.on_attach(function(_, bufnr)
+    local opts = { buffer = bufnr, remap = false, silent = true }
+    nnoremap("gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+    nnoremap("gD", function()
+      vim.lsp.buf.definition()
+    end, opts)
+    nnoremap("gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+    nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", opts)
+    nnoremap("<leader>vd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+    nnoremap("[e", function()
+      vim.diagnostic.goto_prev({
+        float = false,
+      })
+    end, opts)
+    nnoremap("]e", function()
+      vim.diagnostic.goto_next({
+        float = false,
+      })
+    end, opts)
+    nnoremap("[E", function()
+      vim.diagnostic.goto_prev({
+        severity = vim.diagnostic.severity.ERROR,
+        float = false,
+      })
+    end)
+    nnoremap("]E", function()
+      vim.diagnostic.goto_next({
+        severity = vim.diagnostic.severity.ERROR,
+        float = false,
+      })
+    end)
+    nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+    nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
+    nnoremap("<leader>gr", "<cmd>Lspsaga rename<CR>", opts)
   end)
-  nnoremap("]E", function()
-    vim.diagnostic.goto_next({
-      severity = vim.diagnostic.severity.ERROR,
-      float = false,
-    })
-  end)
-  nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
-  nnoremap("<leader>gr", "<cmd>Lspsaga rename<CR>", opts)
 
   require("luasnip.loaders.from_vscode").lazy_load()
 
   lsp.setup()
-
-  local signs = {
-    Error = " ",
-    Warn = " ",
-    Info = " ",
-    Hint = " ",
-  }
-  for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  end
 
   vim.diagnostic.config({
     signs = true,
     severity_sort = true,
     float = false,
     virtual_text = {
-      prefix = "🔥",
       source = false,
     },
   })

@@ -1,7 +1,7 @@
 local conf = require("nils.configuration.git")
 
 return {
-  "ThePrimeagen/git-worktree.nvim",
+  "tpope/vim-fugitive",
   cond = vim.fn.finddir(".git", vim.fn.getcwd() .. ";") ~= "",
   event = "BufEnter",
   config = conf.git,
