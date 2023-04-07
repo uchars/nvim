@@ -51,5 +51,3 @@ require("lazy").setup("nils.plugins", {
     },
   },
 })
-
-vim.notify = require("notify")
