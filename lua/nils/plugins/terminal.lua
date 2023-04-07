@@ -1,7 +1,7 @@
 local conf = require("nils.configuration.terminal")
 
 return {
-  "numToStr/FTerm.nvim",
+  "akinsho/toggleterm.nvim",
   event = "VeryLazy",
-  config = conf.floatterm,
+  config = conf.terminal,
 }
