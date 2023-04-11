@@ -17,8 +17,6 @@ return {
     "sonsan/neotest-jest",
     "marilari88/neotest-vitest",
     "nvim-neotest/neotest-plenary",
-    "nvim-neotest/neotest-python",
-    "sidlatau/neotest-dart",
   },
   config = conf.neotest,
 }

@@ -6,9 +6,6 @@ return {
     event = "BufEnter",
     after = "telescope.nvim",
     config = conf.treesitter,
-    dependencies = {
-      "yioneko/nvim-yati",
-    },
   },
   {
     "romgrk/nvim-treesitter-context",
