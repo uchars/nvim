@@ -6,10 +6,6 @@ function conf.neotest()
   require("neotest").setup({
     adapters = {
       require("neotest-plenary"),
-      require("neotest-dart")({
-        command = "flutter",
-        use_lsp = false,
-      }),
       require("neotest-jest")({
         env = { CI = true },
         cwd = function(path)
@@ -17,7 +13,6 @@ function conf.neotest()
         end,
       }),
       require("neotest-vitest"),
-      require("neotest-python"),
     },
   })
 end
