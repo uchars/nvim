@@ -5,14 +5,22 @@ Configger = {
   config = {},
 }
 
+-- Creates a new Configger object
+-- @param config The default config
 function Configger:new(config)
+  if Configger._instance then
+    return Configger._instance
+  end
+
   local configger = {}
   setmetatable(configger, self)
   self.__index = self
-  configger.config = config
+  configger.config = config or {}
   configger.config_path = vim.fn.stdpath("data") .. "/configger.json"
   configger.config_file = Path:new(configger.config_path)
+  Configger._instance = configger
 
+  print("configger loaded")
   return configger
 end
 
@@ -38,13 +46,14 @@ end
 
 -- Returns the value of a config key
 -- @param key The key of the config value
-function Configger:getConfigValue(key)
+function Configger:get(key)
   return self.config[key]
 end
 
 -- Sets the value of a config key
 -- @param key The key of the config value
-function Configger:setConfigValue(key, value)
+-- @param value The value of the config key
+function Configger:set(key, value)
   self.config[key] = value
   self.config_file:write(vim.fn.json_encode(self.config), "w")
 end
@@ -61,3 +70,5 @@ function Configger:setPath(path)
   self.config_path = path
   self.config_file = Path:new(self.config_path)
 end
+
+return Configger
