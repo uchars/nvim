@@ -61,6 +61,7 @@ end
 
 function conf.lspzero()
   local has_words_before = function()
+    ---@diagnostic disable-next-line: deprecated
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
@@ -118,41 +119,39 @@ function conf.lspzero()
     info = "»",
   })
 
-  lsp.on_attach(function(_, bufnr)
-    local opts = { buffer = bufnr, remap = false, silent = true }
-    nnoremap("gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-    nnoremap("gD", function()
-      vim.lsp.buf.definition()
-    end, opts)
-    nnoremap("gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
-    nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", opts)
-    nnoremap("<leader>vd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-    nnoremap("[e", function()
-      vim.diagnostic.goto_prev({
-        float = false,
-      })
-    end, opts)
-    nnoremap("]e", function()
-      vim.diagnostic.goto_next({
-        float = false,
-      })
-    end, opts)
-    nnoremap("[E", function()
-      vim.diagnostic.goto_prev({
-        severity = vim.diagnostic.severity.ERROR,
-        float = false,
-      })
-    end)
-    nnoremap("]E", function()
-      vim.diagnostic.goto_next({
-        severity = vim.diagnostic.severity.ERROR,
-        float = false,
-      })
-    end)
-    nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-    nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
-    nnoremap("<leader>gr", "<cmd>Lspsaga rename<CR>", opts)
+  local opts = { remap = false, silent = true }
+  nnoremap("gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+  nnoremap("gD", function()
+    vim.lsp.buf.definition()
+  end, opts)
+  nnoremap("gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+  nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", opts)
+  nnoremap("<leader>vd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+  nnoremap("[e", function()
+    vim.diagnostic.goto_prev({
+      float = false,
+    })
+  end, opts)
+  nnoremap("]e", function()
+    vim.diagnostic.goto_next({
+      float = false,
+    })
+  end, opts)
+  nnoremap("[E", function()
+    vim.diagnostic.goto_prev({
+      severity = vim.diagnostic.severity.ERROR,
+      float = false,
+    })
   end)
+  nnoremap("]E", function()
+    vim.diagnostic.goto_next({
+      severity = vim.diagnostic.severity.ERROR,
+      float = false,
+    })
+  end)
+  nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
+  nnoremap("<leader>gr", "<cmd>Lspsaga rename<CR>", opts)
 
   require("luasnip.loaders.from_vscode").lazy_load()
 
