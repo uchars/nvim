@@ -39,6 +39,7 @@ function conf.nullls()
       null_ls.builtins.formatting.dart_format,
       null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.rustfmt,
+      null_ls.builtins.formatting.sql_formatter,
     },
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
@@ -126,7 +127,9 @@ function conf.lspzero()
   end, opts)
   nnoremap("gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
   nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", opts)
-  nnoremap("<leader>vd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+  nnoremap("<leader>vd", function()
+    vim.diagnostic.open_float()
+  end, opts)
   nnoremap("[e", function()
     vim.diagnostic.goto_prev({
       float = false,
@@ -161,9 +164,7 @@ function conf.lspzero()
     signs = true,
     severity_sort = true,
     float = false,
-    virtual_text = {
-      source = false,
-    },
+    virtual_text = true,
   })
 end
 

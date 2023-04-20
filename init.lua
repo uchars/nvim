@@ -16,7 +16,8 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup("nils.plugins", {
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
   change_detection = {
-    notify = false,
+    enabled = true,
+    notify = true,
   },
   defaults = {
     lazy = true,

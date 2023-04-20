@@ -6,4 +6,11 @@ return {
       require("Comment").setup()
     end,
   },
+  {
+    "kkoomen/vim-doge",
+    event = "BufEnter",
+    build = function()
+      vim.fn["doge#install"]()
+    end,
+  },
 }

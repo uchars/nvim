@@ -12,13 +12,6 @@ end
 
 vim.cmd([[autocmd FileType * setlocal formatoptions-=cro]])
 
-autocmd("BufWritePost", {
-  pattern = "*.arb",
-  callback = function()
-    vim.fn.jobstart("flutter gen-l10n")
-  end,
-})
-
 autocmd("TextYankPost", {
   group = yank_group,
   pattern = "*",
