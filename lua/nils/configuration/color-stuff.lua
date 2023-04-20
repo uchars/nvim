@@ -87,4 +87,8 @@ function conf.catppuccin()
   require("catppuccin").setup({})
 end
 
+function conf.onedarkpro()
+  require("onedarkpro").setup({})
+end
+
 return conf
