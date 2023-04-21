@@ -9,24 +9,24 @@ Configger = {
 -- @param config The default config
 -- @param[opt] config_file The path to the config file
 function Configger:new(
-  config, --[[optional]]
-  config_file
+--[[optional]] default_config,
+  --[[optional]] config_file
 )
   local configger = {}
   setmetatable(configger, self)
   self.__index = self
 
-  configger.config_file = config_file or Path:new(vim.fn.stdpath("data") .. "/configger.json")
+  self.config_file = config_file or Path:new(vim.fn.stdpath("data") .. "/configger.json")
 
-  if configger.config_file:exists() then
-    local config_json = vim.fn.json_decode(configger.config_file:read()) -- Read the config file
-    configger.config = vim.tbl_extend("force", configger.config, config_json) -- Merge the config with the default config
+  if self.config_file:exists() then
+    local config_json = vim.fn.json_decode(self.config_file:read()) -- Read the config file
+    self.config = vim.tbl_extend("force", self.config, config_json) -- Merge the config with the default config
   else
-    configger.config_file:write(vim.fn.json_encode(configger.config), "w") -- Write the default config to the config file if it doesn't exist
-    configger.config = config
+    self.config_file:write(vim.fn.json_encode(self.config), "w")    -- Write the default config to the config file if it doesn't exist
+    self.config = default_config or {}
   end
 
-  return configger
+  return self
 end
 
 function Configger:readConfig()
@@ -34,7 +34,7 @@ function Configger:readConfig()
     local config_json = vim.fn.json_decode(self.config_file:read()) -- Read the config file
     self.config = vim.tbl_extend("force", self.config, config_json) -- Merge the config with the default config
   else
-    self.config_file:write(vim.fn.json_encode(self.config), "w") -- Write the default config to the config file if it doesn't exist
+    self.config_file:write(vim.fn.json_encode(self.config), "w")    -- Write the default config to the config file if it doesn't exist
   end
   return self.config
 end
