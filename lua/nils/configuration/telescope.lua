@@ -45,7 +45,6 @@ function conf.telescope()
   local autocmd = vim.api.nvim_create_autocmd
 
   function SetColorscheme()
-    print("Setting colorscheme to " .. vim.g.colors_name .. "")
     configger:set("colorscheme", vim.g.colors_name)
   end
 

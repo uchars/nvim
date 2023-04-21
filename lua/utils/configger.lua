@@ -15,12 +15,18 @@ function Configger:new(config)
   local configger = {}
   setmetatable(configger, self)
   self.__index = self
-  configger.config = config or {}
   configger.config_path = vim.fn.stdpath("data") .. "/configger.json"
   configger.config_file = Path:new(configger.config_path)
+
+  if configger.config_file:exists() then
+    local config_json = vim.fn.json_decode(configger.config_file:read())      -- Read the config file
+    configger.config = vim.tbl_extend("force", configger.config, config_json) -- Merge the config with the default config
+  else
+    configger.config_file:write(vim.fn.json_encode(configger.config), "w")    -- Write the default config to the config file if it doesn't exist
+    configger.config = config
+  end
   Configger._instance = configger
 
-  print("configger loaded")
   return configger
 end
 

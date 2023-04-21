@@ -1,6 +1,6 @@
 -- Import dependencies
 local Path = require("plenary.path")
-local Configger = require("../../lua/utils/configger")
+local Configger = require("utils.configger")
 
 local config = {
   colorscheme = "kanagawa",
@@ -9,7 +9,6 @@ local config = {
 local configger = Configger:new(config)
 
 -- Apply configuration
-print("Setting colorscheme to " .. vim.g.colors_name .. "")
 vim.cmd.colorscheme(configger:get("colorscheme")) -- set colorscheme
 if configger:get("transparency") then
   vim.cmd("TransparentEnable")                    -- set transparency
