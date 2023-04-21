@@ -7,13 +7,16 @@ Configger = {
 
 -- Creates a new Configger object
 -- @param config The default config
-function Configger:new(config)
+-- @param[opt] config_file The path to the config file
+function Configger:new(
+  config, --[[optional]]
+  config_file
+)
   local configger = {}
   setmetatable(configger, self)
   self.__index = self
 
-  configger.config_path = vim.fn.stdpath("data") .. "/configger.json"
-  configger.config_file = Path:new(configger.config_path)
+  configger.config_file = config_file or Path:new(vim.fn.stdpath("data") .. "/configger.json")
 
   if configger.config_file:exists() then
     local config_json = vim.fn.json_decode(configger.config_file:read()) -- Read the config file
@@ -63,10 +66,11 @@ function Configger:set(key, value)
   self.config_file:write(vim.fn.json_encode(self.config), "w")
 end
 
--- Returns the path of the config file
--- @return The path of the config file
-function Configger:getPath()
-  return self.config_path
+-- Deletes a config key
+-- @param key The key of the config value
+function Configger:delete(key)
+  self.config[key] = nil
+  self.config_file:write(vim.fn.json_encode(self.config), "w")
 end
 
 return Configger

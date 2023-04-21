@@ -1,0 +1,15 @@
+local configger = require("utils.configger")
+
+describe("configger", function()
+  it("should load a configuration file", function()
+    local config = configger:new({ some_value = 42, another_value = "hello world" }})
+    assert.are.same(config.some_value, 42)
+    assert.are.same(config.another_value, "hello world")
+  end)
+
+  it("should return default values when file is not found", function()
+    local config = configger:new({ some_value = 42, another_value = "hello world" }))
+    assert.are.same(config.some_value, 123)
+    assert.are.same(config.another_value, "foo")
+  end)
+end)
