@@ -12,6 +12,7 @@ return {
   { "EdenEast/nightfox.nvim",      lazy = false, config = colorConf.nightfox },
   { "Mofiqul/vscode.nvim",         lazy = false, config = colorConf.vscode },
   { "catppuccin/nvim",             lazy = false, config = colorConf.catppuccin },
+  { "olimorris/onedarkpro.nvim",   lazy = false, config = colorConf.onedarkpro },
   {
     "folke/zen-mode.nvim",
     event = "VeryLazy",

@@ -1,6 +1,7 @@
 local Path = require("plenary.path")
 local conf = {}
 local Remap = require("nils.keymap")
+local Configger = require("utils.configger")
 
 local nnoremap = Remap.nnoremap
 local tnoremap = Remap.tnoremap
@@ -40,31 +41,21 @@ function conf.telescope()
   nnoremap("<M-p>", "<cmd>Telescope menu<cr>")
   tnoremap("<M-p>", "<cmd>Telescope menu<cr>")
 
-  local config_path = vim.fn.stdpath("data") .. "/config.json"
-
-  local config_file = Path:new(config_path)
-
-  -- Cache the parsed configuration data
-  local config_json = config_file:exists() and vim.fn.json_decode(config_file:read()) or {}
-
-  local function write_config(config)
-    config_file:write(vim.fn.json_encode(config), "w")
-  end
-
-  local function update_config()
-    config_json.colorscheme = vim.g.colors_name
-    config_json.transparency = vim.g.transparent_enabled
-    write_config(config_json)
-  end
-
+  local configger = Configger:new()
   local autocmd = vim.api.nvim_create_autocmd
+
+  function SetColorscheme()
+    print("Setting colorscheme to " .. vim.g.colors_name .. "")
+    configger:set("colorscheme", vim.g.colors_name)
+  end
+
   autocmd("ColorScheme", {
-    callback = update_config,
+    callback = SetColorscheme,
   })
 
   function TransparentToggle()
     vim.cmd("TransparentToggle")
-    update_config()
+    configger:set("transparency", vim.g.transparent_enabled)
   end
 
   require("telescope").setup({

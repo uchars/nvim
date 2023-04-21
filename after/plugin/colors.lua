@@ -1,27 +1,18 @@
 -- Import dependencies
 local Path = require("plenary.path")
+local Configger = require("../../lua/utils/configger")
 
 local config = {
   colorscheme = "kanagawa",
   transparency = false,
 }
-
-local config_path = vim.fn.stdpath("data") .. "/config.json"
-
-local config_file = Path:new(config_path)
-
--- If configuration file exists, read and merge with default configuration
-if config_file:exists() then
-  local config_json = vim.fn.json_decode(config_file:read())
-  config = vim.tbl_extend("force", config, config_json)
-else
-  config_file:write(vim.fn.json_encode(config), "w")
-end
+local configger = Configger:new(config)
 
 -- Apply configuration
-vim.cmd.colorscheme(config.colorscheme) -- set colorscheme
-if config.transparency then
-  vim.cmd("TransparentEnable")          -- set transparency
+print("Setting colorscheme to " .. vim.g.colors_name .. "")
+vim.cmd.colorscheme(configger:get("colorscheme")) -- set colorscheme
+if configger:get("transparency") then
+  vim.cmd("TransparentEnable")                    -- set transparency
 end
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
