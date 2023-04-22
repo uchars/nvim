@@ -1,4 +1,3 @@
-local Path = require("plenary.path")
 local conf = {}
 local Remap = require("nils.keymap")
 local Configger = require("utils.configger")
@@ -113,6 +112,7 @@ function conf.telescope()
             { "Toggle Outline",               "Lspsaga outline" },
             { "Refresh Colorizer",            "ColorizerReloadAllBuffers" },
             { "Toggle Colorizer",             "ColorizerToggle" },
+            { "Show TODO",                    "TodoTelescope" },
           },
         },
       },

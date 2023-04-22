@@ -14,6 +14,9 @@ function conf.todo()
       PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
       NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
     },
+    highlight = {
+      keyword = "bg",
+    },
   })
 end
 

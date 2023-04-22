@@ -30,7 +30,7 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    event = "BufRead",
+    event = "UIEnter",
     config = colorConf.todo,
   },
 }

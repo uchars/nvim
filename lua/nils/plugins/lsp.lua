@@ -33,10 +33,6 @@ return {
         config = conf.nullls,
       },
       {
-        "folke/trouble.nvim",
-        config = conf.trouble,
-      },
-      {
         "glepnir/lspsaga.nvim",
         event = "LspAttach",
         config = conf.lspsaga,
