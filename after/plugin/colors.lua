@@ -1,5 +1,3 @@
--- Import dependencies
-local Path = require("plenary.path")
 local Configger = require("utils.configger")
 
 local config = {

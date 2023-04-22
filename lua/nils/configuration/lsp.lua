@@ -21,13 +21,6 @@ function conf.lspsaga()
   })
 end
 
-function conf.trouble()
-  require("trouble").setup({
-    auto_preview = false,
-    auto_fold = true,
-  })
-end
-
 function conf.nullls()
   local _, null_ls = pcall(require, "null-ls")
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

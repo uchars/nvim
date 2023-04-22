@@ -1,4 +1,3 @@
-local Path = require("plenary.path")
 local conf = {}
 local Remap = require("nils.keymap")
 local Configger = require("utils.configger")
