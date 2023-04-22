@@ -6,7 +6,7 @@ Configger = {
 }
 
 -- Creates a new Configger object
--- @param config The default config
+-- @param[opt] config The default config
 -- @param[opt] config_file The path to the config file
 function Configger:new(
 --[[optional]] default_config,
@@ -22,8 +22,8 @@ function Configger:new(
     local config_json = vim.fn.json_decode(self.config_file:read()) -- Read the config file
     self.config = vim.tbl_extend("force", self.config, config_json) -- Merge the config with the default config
   else
-    self.config_file:write(vim.fn.json_encode(self.config), "w")    -- Write the default config to the config file if it doesn't exist
     self.config = default_config or {}
+    self.config_file:write(vim.fn.json_encode(self.config), "w") -- Write the default config to the config file if it doesn't exist
   end
 
   return self
