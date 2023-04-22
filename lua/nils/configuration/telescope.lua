@@ -112,6 +112,7 @@ function conf.telescope()
             { "Toggle Outline",               "Lspsaga outline" },
             { "Refresh Colorizer",            "ColorizerReloadAllBuffers" },
             { "Toggle Colorizer",             "ColorizerToggle" },
+            { "Show TODO",                    "TodoTelescope" },
           },
         },
       },
