@@ -9,15 +9,12 @@ Configger = {
 ---@param default_config? table The default config
 ---@param config_file? string The filename of the config file (creates new file if it doesn't exist)
 ---@return Configger configger The Configger object
-function Configger:new(
-  default_config,
-  config_file
-)
+function Configger:new(default_config, config_file)
   local configger = {}
   setmetatable(configger, self)
   self.__index = self
 
-  if (config_file == nil) then
+  if config_file == nil then
     self.config_file = Path:new(vim.fn.stdpath("data") .. "/configger.json")  -- Set the config file to the default config file
   else
     self.config_file = Path:new(vim.fn.stdpath("data") .. "/" .. config_file) -- Set the config file to the specified config file

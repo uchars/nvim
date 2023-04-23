@@ -1,10 +1,9 @@
-local Path = require("plenary.path")
 local Configger = require("utils.configger")
 
 local test_config_file = "test_configger_test.json"
 local test_default_config = {
   some_value = 42,
-  another_value = "hello world"
+  another_value = "hello world",
 }
 print("Creating test config file: " .. tostring(test_config_file))
 local configger = Configger:new(test_default_config, test_config_file)
@@ -19,7 +18,7 @@ describe("Configger", function()
   it("should return new config.", function()
     local new_config = {
       new_value = 420,
-      another_new_value = "Noah"
+      another_new_value = "Noah",
     }
     configger:setConfig(new_config)
     assert.equals(new_config, configger:getConfig())
