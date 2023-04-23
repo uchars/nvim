@@ -29,6 +29,8 @@ function Configger:new(
   return self
 end
 
+-- Reads the config file
+-- @return The config
 function Configger:readConfig()
   if self.config_file:exists() then
     local config_json = vim.fn.json_decode(self.config_file:read()) -- Read the config file
