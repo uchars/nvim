@@ -1,7 +1,7 @@
 local Path = require("plenary.path")
 local Configger = require("utils.configger")
 
-local test_config_file = Path:new(vim.fn.stdpath("data") .. "/test_configger_test.json")
+local test_config_file = "test_configger_test.json"
 local test_default_config = {
   some_value = 42,
   another_value = "hello world"
@@ -12,7 +12,8 @@ local configger = Configger:new(test_default_config, test_config_file)
 describe("Configger", function()
   it("should return default config if config file is removed.", function()
     os.remove(tostring(test_config_file))
-    assert.equals(test_default_config, configger:readConfig())
+    assert.equals(42, configger:get("some_value"))
+    assert.equals("hello world", configger:get("another_value"))
   end)
 
   it("should return new config.", function()
@@ -50,5 +51,5 @@ describe("Configger", function()
   end)
 end)
 
-print("Removing test config file: " .. tostring(test_config_file))
-os.remove(tostring(test_config_file))
+print("Removing test config file: " .. test_config_file)
+os.remove(configger:getConfigPath())
