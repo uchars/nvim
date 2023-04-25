@@ -42,7 +42,7 @@ function conf.treesitter()
       enable = true,
     },
     indent = {
-      enable = false,
+      enable = true,
       disable = {},
     },
     sync_install = false,

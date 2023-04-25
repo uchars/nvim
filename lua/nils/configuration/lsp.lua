@@ -114,14 +114,21 @@ function conf.lspzero()
   })
 
   local opts = { remap = false, silent = true }
-  nnoremap("gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+
   nnoremap("gD", function()
+    vim.lsp.buf.declaration()
+  end, opts)
+  nnoremap("gd", function()
     vim.lsp.buf.definition()
   end, opts)
-  nnoremap("gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
-  nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", opts)
+  nnoremap("gi", function()
+    vim.lsp.buf.implementation()
+  end, opts)
+  nnoremap("K", function()
+    vim.lsp.buf.hover()
+  end, opts)
   nnoremap("<leader>vd", function()
-    vim.diagnostic.open_float()
+    vim.diagnostic.open_float({ border = "rounded" })
   end, opts)
   nnoremap("[e", function()
     vim.diagnostic.goto_prev({
@@ -150,6 +157,16 @@ function conf.lspzero()
   nnoremap("<leader>gr", "<cmd>Lspsaga rename<CR>", opts)
 
   require("luasnip.loaders.from_vscode").lazy_load()
+
+  require("lspconfig").lua_ls.setup({
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+      },
+    },
+  })
 
   lsp.setup()
 

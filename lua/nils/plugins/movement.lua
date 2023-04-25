@@ -12,7 +12,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     config = conf.filetree,
-    lazy = false,
+    event = "UIEnter",
   },
   {
     "mbbill/undotree",

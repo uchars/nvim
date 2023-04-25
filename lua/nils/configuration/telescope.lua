@@ -13,28 +13,40 @@ function conf.telescope()
     require("telescope.builtin").live_grep()
   end)
 
-  nnoremap("<leader>pg", function()
+  nnoremap("<leader>fg", function()
     require("telescope.builtin").git_files()
   end)
 
-  nnoremap("<Leader>pf", function()
+  nnoremap("<Leader>ff", function()
     require("telescope.builtin").find_files()
+  end)
+
+  nnoremap("<Leader>fa", function()
+    require("telescope.builtin").find_files({
+      follow = true,
+      no_ignore = true,
+      hidden = true,
+    })
   end)
 
   nnoremap("<C-p>", function()
     require("telescope.builtin").find_files()
   end)
 
-  nnoremap("<leader>pb", function()
+  nnoremap("<leader>fb", function()
     require("telescope.builtin").buffers()
   end)
 
-  nnoremap("<leader>vh", function()
+  nnoremap("<leader>fh", function()
     require("telescope.builtin").help_tags()
   end)
 
   nnoremap("<leader>gb", function()
     require("telescope.builtin").git_branches()
+  end)
+
+  nnoremap("<leader>gc", function()
+    require("telescope.builtin").git_commits()
   end)
 
   nnoremap("<M-p>", "<cmd>Telescope menu<cr>")
