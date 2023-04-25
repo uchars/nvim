@@ -2,17 +2,17 @@ local statuslineConf = require("nils.configuration.statusline")
 local colorConf = require("nils.configuration.color-stuff")
 
 return {
-  { "ellisonleao/gruvbox.nvim",    lazy = false, config = colorConf.gruvbox },
-  { "xiyaowong/nvim-transparent",  lazy = false, config = colorConf.transparent },
-  { "projekt0n/github-nvim-theme", lazy = false, config = colorConf.github },
-  { "rebelot/kanagawa.nvim",       lazy = false, config = colorConf.kanagawa },
-  { "Everblush/everblush.nvim",    lazy = false, config = colorConf.everblush },
-  { "folke/tokyonight.nvim",       lazy = false, config = colorConf.tokyonight },
-  { "sam4llis/nvim-tundra",        lazy = false, config = colorConf.tundra },
-  { "EdenEast/nightfox.nvim",      lazy = false, config = colorConf.nightfox },
-  { "Mofiqul/vscode.nvim",         lazy = false, config = colorConf.vscode },
-  { "catppuccin/nvim",             lazy = false, config = colorConf.catppuccin },
-  { "olimorris/onedarkpro.nvim",   lazy = false, config = colorConf.onedarkpro },
+  { "ellisonleao/gruvbox.nvim",    event = "VeryLazy", config = colorConf.gruvbox },
+  { "xiyaowong/nvim-transparent",  event = "VeryLazy", config = colorConf.transparent },
+  { "projekt0n/github-nvim-theme", event = "VeryLazy", config = colorConf.github },
+  { "rebelot/kanagawa.nvim",       event = "VeryLazy", config = colorConf.kanagawa },
+  { "Everblush/everblush.nvim",    event = "VeryLazy", config = colorConf.everblush },
+  { "folke/tokyonight.nvim",       event = "VeryLazy", config = colorConf.tokyonight },
+  { "sam4llis/nvim-tundra",        event = "VeryLazy", config = colorConf.tundra },
+  { "EdenEast/nightfox.nvim",      event = "VeryLazy", config = colorConf.nightfox },
+  { "Mofiqul/vscode.nvim",         event = "VeryLazy", config = colorConf.vscode },
+  { "catppuccin/nvim",             event = "VeryLazy", config = colorConf.catppuccin },
+  { "olimorris/onedarkpro.nvim",   event = "VeryLazy", config = colorConf.onedarkpro },
   {
     "folke/zen-mode.nvim",
     event = "VeryLazy",
