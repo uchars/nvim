@@ -8,7 +8,8 @@ return {
     config = conf.treesitter,
   },
   {
-    "romgrk/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-context",
+    -- dir = "~/nvim-treesitter-context/",
     event = "BufRead",
     after = "nvim-treesitter",
     config = conf.treesittercontext,
@@ -18,5 +19,9 @@ return {
     after = "nvim-treesitter",
     ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue" },
     config = conf.autotag,
+  },
+  {
+    "nvim-treesitter/playground",
+    event = "BufEnter",
   },
 }
