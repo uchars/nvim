@@ -36,4 +36,7 @@ vim.opt.updatetime = 50
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
 
+-- one statusline for all windows
+vim.opt.laststatus = 3
+
 vim.g.mapleader = " "

@@ -8,6 +8,21 @@ function conf.filetree()
       enable = true,
       show_on_dirs = true,
     },
+    disable_netrw = true,
+    hijack_netrw = true,
+    hijack_cursor = true,
+    hijack_unnamed_buffer_when_opening = false,
+    sync_root_with_cwd = true,
+    update_focused_file = {
+      enable = true,
+      update_root = false,
+    },
+    view = {
+      preserve_window_proportions = true,
+    },
+    renderer = {
+      root_folder_label = false,
+    },
   })
   nnoremap("<C-b>", ":NvimTreeToggle<CR>", { silent = true })
 end
