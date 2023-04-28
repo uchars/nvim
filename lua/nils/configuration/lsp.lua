@@ -3,6 +3,47 @@ local Remap = require("nils.keymap")
 
 local nnoremap = Remap.nnoremap
 
+local lspkind_icons = {
+  Namespace = "",
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "ﰠ",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "塞",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "פּ",
+  Event = "",
+  Operator = "",
+  TypeParameter = "",
+  Table = "",
+  Object = "",
+  Tag = "",
+  Array = "[]",
+  Boolean = "",
+  Number = "",
+  Null = "ﳠ",
+  String = "",
+  Calendar = "",
+  Watch = "",
+  Package = "",
+  Copilot = "",
+}
+
 function conf.lspsaga()
   require("lspsaga").setup({
     lightbulb = {
@@ -85,7 +126,7 @@ function conf.lspzero()
       elseif has_words_before() then
         cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback()
       end
     end, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
@@ -103,14 +144,25 @@ function conf.lspzero()
   })
 
   lsp.setup_nvim_cmp({
+    formatting = {
+      format = function(_, item)
+        local icon = lspkind_icons[item.kind] or ""
+
+        icon = " " .. icon .. " "
+        item.menu = lspkind_icons.text
+        item.kind = icon
+
+        return item
+      end,
+    },
     mapping = cmp_mappings,
   })
 
   lsp.set_sign_icons({
-    error = "✘",
-    warn = "▲",
-    hint = "⚑",
-    info = "»",
+    error = "",
+    warn = "",
+    hint = "",
+    info = "",
   })
 
   local opts = { remap = false, silent = true }
