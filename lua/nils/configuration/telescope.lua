@@ -107,6 +107,7 @@ function conf.telescope()
                 TransparentToggle()
               end,
             },
+            { "Toggle Filetree",              "NvimTreeToggle" },
             { "Toggle Treesitter Context",    "TSContextToggle" },
             { "LSP Restart",                  "LspRestart" },
             { "Remove all // comments",       "%s/\\/\\/.*//g" },
