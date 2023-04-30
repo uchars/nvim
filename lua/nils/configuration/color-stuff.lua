@@ -40,10 +40,6 @@ function conf.transparent()
   })
 end
 
-function conf.github()
-  require("github-theme").setup({})
-end
-
 function conf.gruvbox()
   require("gruvbox").setup({
     -- transparent_mode = true,

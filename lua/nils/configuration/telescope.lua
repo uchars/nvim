@@ -1,11 +1,11 @@
 local conf = {}
 local Remap = require("nils.keymap")
-local Configger = require("configger")
 
 local nnoremap = Remap.nnoremap
 local tnoremap = Remap.tnoremap
 
 function conf.telescope()
+  local Configger = require("configger")
   local previewers = require("telescope.previewers")
   local actions = require("telescope.actions")
 
