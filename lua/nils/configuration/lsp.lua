@@ -212,6 +212,9 @@ function conf.lspzero()
     formatting = {
       format = function(_, item)
         local icon = lspkind_icons[item.kind] or ""
+        if string.len(item.abbr) > 50 then
+          item.abbr = string.sub(item.abbr, 1, 50) .. " ..."
+        end
 
         icon = " " .. icon .. " " .. item.kind .. " "
         item.menu = lspkind_icons.text
