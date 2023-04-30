@@ -6,9 +6,9 @@ local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
 inoremap("<S-Tab>", "<C-d>")
-inoremap("<C-s>", "<ESC>:w<CR>i")
+inoremap("<C-s>", "<ESC>:w<CR>i", { silent = true })
 
-nnoremap("<C-s>", "<ESC>:w<CR>")
+nnoremap("<C-s>", "<ESC>:w<CR>", { silent = true })
 
 inoremap("<F1>", "<nop>")
 nnoremap("<F1>", "<nop>")
