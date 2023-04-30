@@ -56,7 +56,7 @@ function conf.lspsaga()
     outline = {
       auto_preview = true,
       keys = {
-        jump = "<CR>",
+        expand_or_jump = "<CR>",
       },
     },
   })
@@ -143,21 +143,6 @@ function conf.lspzero()
     ["<C-q>"] = cmp.mapping.complete(),
   })
 
-  lsp.setup_nvim_cmp({
-    formatting = {
-      format = function(_, item)
-        local icon = lspkind_icons[item.kind] or ""
-
-        icon = " " .. icon .. " "
-        item.menu = lspkind_icons.text
-        item.kind = icon
-
-        return item
-      end,
-    },
-    mapping = cmp_mappings,
-  })
-
   lsp.set_sign_icons({
     error = "",
     warn = "",
@@ -221,6 +206,29 @@ function conf.lspzero()
   })
 
   lsp.setup()
+
+  cmp.setup({
+    mapping = cmp_mappings,
+    formatting = {
+      format = function(_, item)
+        local icon = lspkind_icons[item.kind] or ""
+
+        icon = " " .. icon .. " " .. item.kind .. " "
+        item.menu = lspkind_icons.text
+        item.kind = icon
+
+        return item
+      end,
+    },
+    window = {
+      completion = cmp.config.window.bordered({
+        scrollbar = false,
+      }),
+      documentation = cmp.config.window.bordered({
+        scrollbar = false,
+      }),
+    },
+  })
 
   vim.diagnostic.config({
     signs = true,
