@@ -1,6 +1,6 @@
 local conf = {}
 local Remap = require("nils.keymap")
-local Configger = require("utils.configger")
+local Configger = require("configger")
 
 local nnoremap = Remap.nnoremap
 local tnoremap = Remap.tnoremap

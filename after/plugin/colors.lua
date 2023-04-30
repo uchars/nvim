@@ -1,4 +1,4 @@
-local Configger = require("utils.configger")
+local Configger = require("configger")
 
 local config = {
   colorscheme = "kanagawa",
