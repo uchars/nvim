@@ -208,6 +208,13 @@ function conf.lspzero()
   lsp.setup()
 
   cmp.setup({
+    sources = {
+      { name = "crates" },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+      { name = "buffer" },
+      { name = "path" },
+    },
     mapping = cmp_mappings,
     formatting = {
       format = function(_, item)

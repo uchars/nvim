@@ -1,5 +1,6 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.showmode = false
 
 vim.opt.errorbells = false
 
@@ -17,6 +18,8 @@ vim.opt.backup = false
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
@@ -25,6 +28,9 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Give more space for displaying messages.
 vim.opt.cmdheight = 1

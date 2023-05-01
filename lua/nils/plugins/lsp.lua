@@ -45,6 +45,14 @@ return {
     },
   },
   {
+    "Saecki/crates.nvim",
+    event = { "BufReadPre Cargo.toml" },
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("crates").setup()
+    end,
+  },
+  {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     config = function()
