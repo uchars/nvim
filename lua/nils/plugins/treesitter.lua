@@ -8,8 +8,8 @@ return {
     config = conf.treesitter,
   },
   {
-    "nvim-treesitter/nvim-treesitter-context",
-    -- dir = "~/nvim-treesitter-context/",
+    -- "nvim-treesitter/nvim-treesitter-context",
+    dir = "~/nvim/nvim-treesitter-context/",
     event = "BufRead",
     after = "nvim-treesitter",
     config = conf.treesittercontext,
