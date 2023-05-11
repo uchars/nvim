@@ -13,6 +13,7 @@ function conf.neotest()
         end,
       }),
       require("neotest-vitest"),
+      require("neotest-rust"),
     },
   })
 end

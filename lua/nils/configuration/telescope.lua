@@ -85,6 +85,34 @@ function conf.telescope()
     },
     extensions = {
       menu = {
+        test = {
+          items = {
+            {
+              "Run Current",
+              function()
+                require("neotest").run.run()
+              end,
+            },
+            {
+              "Run File",
+              function()
+                require("neotest").run.run(vim.fn.expand("%"))
+              end,
+            },
+            {
+              "Stop All",
+              function()
+                require("neotest").run.stop()
+              end,
+            },
+            {
+              "Toggle Summary",
+              function()
+                require("neotest").summary.toggle()
+              end,
+            },
+          },
+        },
         default = {
           items = {
             { "Flutter Packages",        "lua require('telescope').extensions.pubdev.list()" },
@@ -126,6 +154,7 @@ function conf.telescope()
             { "Refresh Colorizer",            "ColorizerReloadAllBuffers" },
             { "Toggle Colorizer",             "ColorizerToggle" },
             { "Show TODO",                    "TodoTelescope" },
+            { "Test",                         "Telescope menu test" },
           },
         },
       },

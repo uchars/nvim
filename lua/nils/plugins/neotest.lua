@@ -9,6 +9,7 @@ return {
     "dart",
     "flutter",
     "python",
+    "rust",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -17,6 +18,7 @@ return {
     "sonsan/neotest-jest",
     "marilari88/neotest-vitest",
     "nvim-neotest/neotest-plenary",
+    "rouge8/neotest-rust",
   },
   config = conf.neotest,
 }
