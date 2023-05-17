@@ -8,9 +8,6 @@ local configger = Configger:new(config)
 
 -- Apply configuration
 vim.cmd.colorscheme(configger:get("colorscheme")) -- set colorscheme
-if configger:get("transparency") then
-  vim.cmd("TransparentEnable")                    -- set transparency
-end
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 

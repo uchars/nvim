@@ -35,6 +35,8 @@ function conf.transparent()
   require("transparent").setup({
     extra_groups = {
       "TelescopeNormal",
+      "NormalFloat",
+      "NvimTreeNormal",
       "TelescopePrompt",
     },
   })
