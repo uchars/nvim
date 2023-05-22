@@ -9,11 +9,8 @@
 ## Stuff to install
 
 - [neovim](https://github.com/neovim/neovim) either via choco or manual **at least v0.8**
-- [NodeJS](https://nodejs.org/en/)
+- llvm/clang
 - [Chocolately](https://chocolatey.org/install)
-- [Rust](https://doc.rust-lang.org/cargo/getting-started/installation.html)
-- [Go](https://go.dev/)
-- [Python](https://www.python.org/)
 
 ## Windows
 
@@ -24,5 +21,5 @@ choco install sudo
 ```
 
 ```bash
-sudo choco install neovim pwsh git ripgrep
+sudo choco install neovim pwsh git ripgrep llvm
 ```
