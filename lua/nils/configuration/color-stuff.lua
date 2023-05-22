@@ -35,6 +35,10 @@ function conf.transparent()
   require("transparent").setup({
     extra_groups = {
       "TelescopeNormal",
+      "TreesitterContext",
+      "FloatBorder",
+      "NormalFloat",
+      "NvimTreeNormal",
       "TelescopePrompt",
     },
   })
