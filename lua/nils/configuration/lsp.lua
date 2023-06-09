@@ -111,6 +111,7 @@ function conf.lspzero()
     "lua_ls",
     "jsonls",
     "cssls",
+    "clangd",
     "pyright",
     "dockerls",
     "vimls",

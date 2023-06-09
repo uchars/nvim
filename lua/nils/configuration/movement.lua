@@ -21,7 +21,7 @@ function conf.filetree()
       preserve_window_proportions = true,
     },
     renderer = {
-      root_folder_label = false,
+      root_folder_label = ":t",
     },
   })
   nnoremap("<C-b>", ":NvimTreeToggle<CR>", { silent = true })
