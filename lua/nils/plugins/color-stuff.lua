@@ -20,7 +20,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    event = "UIEnter",
+    event = "VeryLazy",
     config = statuslineConf.lualine,
   },
   {
@@ -32,5 +32,11 @@ return {
     "folke/todo-comments.nvim",
     event = "UIEnter",
     config = colorConf.todo,
+  },
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    config = colorConf.dashboard,
+    dependencies = "nvim-tree/nvim-web-devicons",
   },
 }

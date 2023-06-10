@@ -21,10 +21,10 @@ hl("LineNr", {
 
 --
 -- Plugins
-hl("TelescopeNormal", {
-  bg = "none",
-})
-
-hl("TelescopeBorder", {
-  bg = "none",
-})
+-- hl("TelescopeNormal", {
+--   bg = "none",
+-- })
+--
+-- hl("TelescopeBorder", {
+--   bg = "none",
+-- })

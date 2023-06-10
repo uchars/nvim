@@ -21,6 +21,7 @@ function conf.lualine()
     options = {
       section_separators = { left = "", right = "" },
       component_separators = { left = "", right = "" },
+      disabled_filetypes = { "dashboard" },
     },
     sections = {
       lualine_a = { "mode" },
