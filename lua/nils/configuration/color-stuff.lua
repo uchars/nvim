@@ -100,7 +100,7 @@ function conf.dashboard()
           key = "a",
           keymap = "C p",
           key_hl = "Number",
-          action = "lua print(2)",
+          action = "Telescope find_files",
         },
         {
           icon = " ",
@@ -159,6 +159,7 @@ function conf.transparent()
       "FloatBorder",
       "NormalFloat",
       "NvimTreeNormal",
+      "NvimTreeWinSeparator",
       "TelescopePrompt",
     },
   })
