@@ -159,6 +159,7 @@ function conf.transparent()
       "FloatBorder",
       "NormalFloat",
       "NvimTreeNormal",
+      "NvimTreeNormalNC",
       "NvimTreeWinSeparator",
       "TelescopePrompt",
     },
