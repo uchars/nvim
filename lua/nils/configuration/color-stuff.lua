@@ -162,6 +162,16 @@ function conf.transparent()
       "NvimTreeNormalNC",
       "NvimTreeWinSeparator",
       "TelescopePrompt",
+      "NotifyERRORBorder",
+      "NotifyWARNBorder",
+      "NotifyINFOBorder",
+      "NotifyDEBUGBorder",
+      "NotifyTRACEBorder",
+      "NotifyERRORBody",
+      "NotifyWARNBody",
+      "NotifyINFOBody",
+      "NotifyDEBUGBody",
+      "NotifyTRACEBody",
     },
   })
 end
