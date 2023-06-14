@@ -33,10 +33,4 @@ return {
     event = "UIEnter",
     config = colorConf.todo,
   },
-  {
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    config = colorConf.dashboard,
-    dependencies = "nvim-tree/nvim-web-devicons",
-  },
 }
