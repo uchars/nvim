@@ -107,4 +107,8 @@ function conf.onedarkpro()
   require("onedarkpro").setup({})
 end
 
+function conf.github()
+  require("github-theme").setup({})
+end
+
 return conf
