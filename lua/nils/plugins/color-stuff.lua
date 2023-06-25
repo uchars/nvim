@@ -21,7 +21,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    lazy = false,
     config = statuslineConf.lualine,
   },
   {

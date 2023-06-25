@@ -74,6 +74,7 @@ function conf.nullls()
       null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.rustfmt,
       null_ls.builtins.formatting.sql_formatter,
+      null_ls.builtins.formatting.autopep8,
     },
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
@@ -112,7 +113,7 @@ function conf.lspzero()
     "jsonls",
     "cssls",
     "clangd",
-    "pyright",
+    "jedi_language_server",
     "dockerls",
     "vimls",
   })
