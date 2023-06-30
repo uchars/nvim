@@ -10,10 +10,25 @@ return {
       { "neovim/nvim-lspconfig" }, -- Required
       {
         "williamboman/mason.nvim",
-      }, -- Optional
+      },
       {
         "williamboman/mason-lspconfig.nvim",
-      }, -- Optional
+      },
+      {
+        "jayp0521/mason-null-ls.nvim",
+        opts = {
+          automatic_installation = true,
+          automatic_setup = true,
+          ensure_installed = {
+            "autopep8",
+            "eslint_d",
+            "fixjson",
+            "stylua",
+            "markdownlint",
+            "prettierd",
+          },
+        },
+      },
 
       -- Autocompletion
       { "hrsh7th/nvim-cmp" },         -- Required
@@ -31,6 +46,10 @@ return {
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = conf.nullls,
+        dependencies = {
+          "jayp0521/mason-null-ls.nvim",
+        },
+        event = "LspAttach",
       },
       {
         "glepnir/lspsaga.nvim",

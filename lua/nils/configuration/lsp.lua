@@ -73,8 +73,9 @@ function conf.nullls()
       null_ls.builtins.formatting.dart_format,
       null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.rustfmt,
-      null_ls.builtins.formatting.sql_formatter,
       null_ls.builtins.formatting.autopep8,
+      null_ls.builtins.formatting.markdownlint,
+      null_ls.builtins.formatting.fixjson,
     },
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then

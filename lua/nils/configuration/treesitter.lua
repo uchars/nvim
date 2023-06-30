@@ -4,6 +4,9 @@ function conf.treesitter()
   require("nvim-treesitter.install").compilers = { "clang" }
 
   require("nvim-treesitter.configs").setup({
+    rainbow = {
+      enable = true,
+    },
     ensure_installed = {
       -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
       "c",

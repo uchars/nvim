@@ -6,6 +6,9 @@ return {
     event = "BufEnter",
     after = "telescope.nvim",
     config = conf.treesitter,
+    dependencies = {
+      "HiPhish/nvim-ts-rainbow2",
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter-context",

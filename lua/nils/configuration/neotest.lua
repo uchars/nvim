@@ -12,6 +12,7 @@ function conf.neotest()
           return vim.fn.getcwd()
         end,
       }),
+      require("neotest-python"),
       require("neotest-vitest"),
       require("neotest-rust"),
     },
