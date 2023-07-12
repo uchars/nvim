@@ -13,6 +13,7 @@ return {
   { "catppuccin/nvim",             event = "VeryLazy", config = colorConf.catppuccin },
   { "olimorris/onedarkpro.nvim",   event = "VeryLazy", config = colorConf.onedarkpro },
   { "projekt0n/github-nvim-theme", event = "VeryLazy", config = colorConf.github },
+  { "dasupradyumna/midnight.nvim", event = "VeryLazy" },
   { "seandewar/paragon.vim",       event = "VeryLazy" },
   {
     "folke/zen-mode.nvim",

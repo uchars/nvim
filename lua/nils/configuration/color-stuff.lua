@@ -34,15 +34,20 @@ end
 function conf.transparent()
   require("transparent").setup({
     extra_groups = {
+      "WinSeparator",
       "TelescopeNormal",
+      "TelescopeSelection",
       "TelescopeBorder",
+      "TelescopePrompt",
+      "TelescopeMultiSelection",
       "TreesitterContext",
       "FloatBorder",
       "NormalFloat",
       "NvimTreeNormal",
       "NvimTreeNormalNC",
+      "NvimTreeStatusLine",
+      "NvimTreeCursorLine",
       "NvimTreeWinSeparator",
-      "TelescopePrompt",
       "NotifyERRORBorder",
       "NotifyWARNBorder",
       "NotifyINFOBorder",

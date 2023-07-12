@@ -34,8 +34,8 @@ function conf.lualine()
         },
       },
       lualine_x = { "diagnostics", "lsp_progress", "filetype" },
-      lualine_y = {},
-      lualine_z = { "progress" },
+      lualine_y = { "progress" },
+      lualine_z = { "location" },
     },
   })
 end
