@@ -17,7 +17,7 @@ require("lazy").setup("nils.plugins", {
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
   change_detection = {
     enabled = true,
-    notify = true,
+    notify = false,
   },
   defaults = {
     lazy = true,
