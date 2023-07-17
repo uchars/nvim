@@ -2,8 +2,7 @@ local conf = require("nils.configuration.git")
 
 return {
   "tpope/vim-fugitive",
-  cond = vim.fn.finddir(".git", vim.fn.getcwd() .. ";") ~= "",
-  event = "BufEnter",
+  event = "VeryLazy",
   config = conf.git,
   dependencies = {
     "lewis6991/gitsigns.nvim",

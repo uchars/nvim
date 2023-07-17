@@ -16,6 +16,6 @@ return {
   },
   {
     "mbbill/undotree",
-    event = "BufEnter",
+    event = "BufReadPost",
   },
 }

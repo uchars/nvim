@@ -42,30 +42,26 @@ return {
       { "L3MON4D3/LuaSnip" }, -- Required
       { "rafamadriz/friendly-snippets" },
 
-      -- Visual stuff
       {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = conf.nullls,
-        dependencies = {
-          "jayp0521/mason-null-ls.nvim",
-        },
-        event = "LspAttach",
-      },
-      {
-        "glepnir/lspsaga.nvim",
-        event = "LspAttach",
-        config = conf.lspsaga,
-        dependencies = {
-          { "nvim-tree/nvim-web-devicons" },
-          --Please make sure you install markdown and markdown_inline parser
-          { "nvim-treesitter/nvim-treesitter" },
-        },
+        "j-hui/fidget.nvim",
+        config = function()
+          require("fidget").setup({
+            window = {
+              blend = 0,
+            },
+            sources = {
+              ["null-ls"] = {
+                ignore = true,
+              },
+            },
+          })
+        end,
       },
     },
   },
   {
     "Saecki/crates.nvim",
-    event = { "BufReadPre Cargo.toml" },
+    event = { "BufReadPost Cargo.toml" },
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("crates").setup({
@@ -77,19 +73,11 @@ return {
     end,
   },
   {
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    config = function()
-      require("fidget").setup({
-        window = {
-          blend = 0,
-        },
-        sources = {
-          ["null-ls"] = {
-            ignore = true,
-          },
-        },
-      })
-    end,
+    "jose-elias-alvarez/null-ls.nvim",
+    config = conf.nullls,
+    dependencies = {
+      "jayp0521/mason-null-ls.nvim",
+    },
+    event = "BufReadPost",
   },
 }

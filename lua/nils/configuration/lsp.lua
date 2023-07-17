@@ -44,24 +44,6 @@ local lspkind_icons = {
   Copilot = "",
 }
 
-function conf.lspsaga()
-  require("lspsaga").setup({
-    lightbulb = {
-      enable = false,
-    },
-    diagnostic = {
-      on_insert = false,
-      show_code_action = false,
-    },
-    outline = {
-      auto_preview = true,
-      keys = {
-        expand_or_jump = "<CR>",
-      },
-    },
-  })
-end
-
 function conf.nullls()
   local _, null_ls = pcall(require, "null-ls")
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -192,9 +174,9 @@ function conf.lspzero()
       float = false,
     })
   end)
-  nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-  nnoremap("<leader>vca", "<cmd>Lspsaga code_action<CR>", opts)
-  nnoremap("<leader>gr", "<cmd>Lspsaga rename<CR>", opts)
+  nnoremap("<leader>ca", vim.lsp.buf.code_action, opts)
+  nnoremap("<leader>vca", vim.lsp.buf.code_action, opts)
+  nnoremap("<leader>gr", vim.lsp.buf.rename, opts)
 
   require("luasnip.loaders.from_vscode").lazy_load()
 

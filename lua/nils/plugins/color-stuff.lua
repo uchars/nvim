@@ -2,8 +2,8 @@ local statuslineConf = require("nils.configuration.statusline")
 local colorConf = require("nils.configuration.color-stuff")
 
 return {
-  { "ellisonleao/gruvbox.nvim",    event = "VeryLazy", config = colorConf.gruvbox },
   { "xiyaowong/nvim-transparent",  lazy = false,       config = colorConf.transparent },
+  { "ellisonleao/gruvbox.nvim",    event = "VeryLazy", config = colorConf.gruvbox },
   { "rebelot/kanagawa.nvim",       event = "VeryLazy", config = colorConf.kanagawa },
   { "Everblush/everblush.nvim",    event = "VeryLazy", config = colorConf.everblush },
   { "folke/tokyonight.nvim",       event = "VeryLazy", config = colorConf.tokyonight },
