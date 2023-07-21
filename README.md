@@ -1,11 +1,5 @@
 # NVIM Configuration
 
-## Quickstart
-
-1. Install the dependencies in the [Stuff to install](##stuff-to-install) section
-2. Open neovim
-3. Wait for Treesitter to install the parsers (might take a while)
-
 ## Stuff to install
 
 - [neovim](https://github.com/neovim/neovim) either via choco or manual **at least v0.8**
