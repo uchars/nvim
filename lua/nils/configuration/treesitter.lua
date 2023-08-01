@@ -11,7 +11,7 @@ function conf.treesitter()
       -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
       "c",
       "lua",
-      "dart",
+      -- "dart",
       "css",
       "diff",
       "dockerfile",
