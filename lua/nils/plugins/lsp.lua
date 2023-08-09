@@ -36,7 +36,6 @@ return {
       { "hrsh7th/cmp-buffer" },       -- Optional
       { "hrsh7th/cmp-path" },         -- Optional
       { "saadparwaiz1/cmp_luasnip" }, -- Optional
-      { "hrsh7th/cmp-nvim-lua" },     -- Optional
 
       -- Snippets
       { "L3MON4D3/LuaSnip" }, -- Required
@@ -47,6 +46,9 @@ return {
         tag = "legacy",
         config = function()
           require("fidget").setup({
+            text = {
+              spinner = "moon",
+            },
             window = {
               blend = 0,
             },

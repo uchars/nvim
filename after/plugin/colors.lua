@@ -1,7 +1,7 @@
 local Configger = require("configger")
 
 local config = {
-  colorscheme = "kanagawa",
+  colorscheme = "onedark",
   transparency = false,
 }
 local configger = Configger:new(config)

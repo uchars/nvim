@@ -23,8 +23,8 @@ return {
     ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue" },
     config = conf.autotag,
   },
-  {
-    "nvim-treesitter/playground",
-    event = "BufEnter",
-  },
+  -- {
+  --   "nvim-treesitter/playground",
+  --   event = "BufEnter",
+  -- },
 }
