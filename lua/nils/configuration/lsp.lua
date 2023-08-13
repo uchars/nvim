@@ -78,29 +78,15 @@ function conf.nullls()
   end, { nargs = 0 })
 end
 
-function conf.lspzero()
+function conf.cmp()
+  local lsp = require("lsp-zero")
   local has_words_before = function()
     ---@diagnostic disable-next-line: deprecated
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
 
-  vim.g.cmp_buftype_blacklist = { ["<buffer>"] = true }
-  local lsp = require("lsp-zero")
-
-  lsp.preset("recommended")
-  lsp.ensure_installed({
-    "tsserver",
-    "marksman",
-    "lua_ls",
-    "jsonls",
-    "cssls",
-    "clangd",
-    "jedi_language_server",
-    "dockerls",
-    "vimls",
-  })
-
+  require("lsp-zero.cmp").extend()
   local cmp = require("cmp")
   local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -126,6 +112,57 @@ function conf.lspzero()
     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-q>"] = cmp.mapping.complete(),
+  })
+
+  cmp.setup({
+    sources = {
+      { name = "crates" },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+      { name = "buffer" },
+      { name = "path" },
+    },
+    mapping = cmp_mappings,
+    formatting = {
+      format = function(_, item)
+        local icon = lspkind_icons[item.kind] or ""
+        if string.len(item.abbr) > 50 then
+          item.abbr = string.sub(item.abbr, 1, 50) .. " ..."
+        end
+
+        icon = " " .. icon .. " " .. item.kind .. " "
+        item.menu = lspkind_icons.text
+        item.kind = icon
+
+        return item
+      end,
+    },
+    window = {
+      completion = cmp.config.window.bordered({
+        scrollbar = false,
+      }),
+      documentation = cmp.config.window.bordered({
+        scrollbar = false,
+      }),
+    },
+  })
+end
+
+function conf.lspzero()
+  vim.g.cmp_buftype_blacklist = { ["<buffer>"] = true }
+  local lsp = require("lsp-zero")
+
+  lsp.preset("recommended")
+  lsp.ensure_installed({
+    "tsserver",
+    "marksman",
+    "lua_ls",
+    "jsonls",
+    "cssls",
+    "clangd",
+    "jedi_language_server",
+    "dockerls",
+    "vimls",
   })
 
   lsp.set_sign_icons({
@@ -191,39 +228,6 @@ function conf.lspzero()
   })
 
   lsp.setup()
-
-  cmp.setup({
-    sources = {
-      { name = "crates" },
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "buffer" },
-      { name = "path" },
-    },
-    mapping = cmp_mappings,
-    formatting = {
-      format = function(_, item)
-        local icon = lspkind_icons[item.kind] or ""
-        if string.len(item.abbr) > 50 then
-          item.abbr = string.sub(item.abbr, 1, 50) .. " ..."
-        end
-
-        icon = " " .. icon .. " " .. item.kind .. " "
-        item.menu = lspkind_icons.text
-        item.kind = icon
-
-        return item
-      end,
-    },
-    window = {
-      completion = cmp.config.window.bordered({
-        scrollbar = false,
-      }),
-      documentation = cmp.config.window.bordered({
-        scrollbar = false,
-      }),
-    },
-  })
 
   vim.diagnostic.config({
     signs = true,

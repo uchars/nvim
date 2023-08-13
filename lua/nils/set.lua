@@ -47,3 +47,7 @@ vim.opt.shortmess:append("c")
 vim.opt.laststatus = 3
 
 vim.g.mapleader = " "
+
+vim.api.nvim_create_user_command("W", function()
+  vim.cmd("w")
+end, { nargs = 0 })

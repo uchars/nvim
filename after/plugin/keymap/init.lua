@@ -27,8 +27,13 @@ nnoremap("J", "mzJ`z")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
 
+-- Paste the last thing yanked, not deleted
+nnoremap(",p", '"0p')
+nnoremap(",P", '"0P')
+
 -- greatest remap ever
 xnoremap("<leader>p", '"_dP')
+nnoremap("<leader>p", '"_dP')
 
 -- next greatest remap ever : asbjornHaland
 nnoremap("<leader>y", '"+y')
