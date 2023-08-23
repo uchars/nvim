@@ -76,7 +76,7 @@ function conf.lualine()
           cond = git_blame.is_blame_text_available,
         },
       },
-      lualine_x = { "diagnostics", "lsp_progress", "filetype" },
+      lualine_x = { "diagnostics", "filetype" },
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },
