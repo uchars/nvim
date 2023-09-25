@@ -30,6 +30,15 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        config = function()
+          require("lsp_signature").setup({
+            hint_enable = false,
+          })
+        end
+      },
+      {
         'j-hui/fidget.nvim',
         tag = 'legacy',
         config = function()
