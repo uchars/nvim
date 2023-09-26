@@ -58,6 +58,7 @@ require('lazy').setup({
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
       'rafamadriz/friendly-snippets',
     },
   },
@@ -468,6 +469,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
+  cmake = {},
   asm_lsp = {},
   bashls = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
@@ -549,6 +551,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
   },
 }
 
