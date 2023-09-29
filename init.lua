@@ -30,23 +30,23 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       {
-        "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
+        'ray-x/lsp_signature.nvim',
+        event = 'VeryLazy',
         config = function()
-          require("lsp_signature").setup({
+          require('lsp_signature').setup {
             hint_enable = false,
-          })
-        end
+          }
+        end,
       },
       {
         'j-hui/fidget.nvim',
         tag = 'legacy',
         config = function()
-          require("fidget").setup {
+          require('fidget').setup {
             window = { blend = 0 },
-            text = { spinner = "earth" }
+            text = { spinner = 'earth' },
           }
-        end
+        end,
       },
       'folke/neodev.nvim',
     },
@@ -79,15 +79,23 @@ require('lazy').setup({
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
         vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then return ']c' end
-          vim.schedule(function() gs.next_hunk() end)
+          if vim.wo.diff then
+            return ']c'
+          end
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
           return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
         vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then return '[c' end
-          vim.schedule(function() gs.prev_hunk() end)
+          if vim.wo.diff then
+            return '[c'
+          end
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
           return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
+        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
       end,
     },
   },
@@ -126,7 +134,7 @@ require('lazy').setup({
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
-      "octarect/telescope-menu.nvim",
+      'octarect/telescope-menu.nvim',
       'nvim-lua/plenary.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -148,9 +156,6 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-
-  require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
 
   { import = 'custom.plugins' },
 }, {})
@@ -227,64 +232,64 @@ require('telescope').setup {
       test = {
         items = {
           {
-            "Run Current",
+            'Run Current',
             function()
-              require("neotest").run.run()
+              require('neotest').run.run()
             end,
           },
           {
-            "Run File",
+            'Run File',
             function()
-              require("neotest").run.run(vim.fn.expand("%"))
+              require('neotest').run.run(vim.fn.expand '%')
             end,
           },
           {
-            "Stop All",
+            'Stop All',
             function()
-              require("neotest").run.stop()
+              require('neotest').run.stop()
             end,
           },
           {
-            "Toggle Summary",
+            'Toggle Summary',
             function()
-              require("neotest").summary.toggle()
+              require('neotest').summary.toggle()
             end,
           },
         },
       },
       default = {
         items = {
-          { "Checkhealth",                  "checkhealth" },
-          { "Files",                        "Telescope find_files" },
-          { "Run Tests",                    "lua require('neotest').run.run(vim.fn.expand('%'))" },
-          { "Zen Mode Enable/Disable",      "ZenMode" },
-          { "Change Colorscheme",           "Telescope colorscheme" },
-          { "Markdown Preview",             "MarkdownPreviewToggle" },
-          { "Toggle Terminal",              "ToggleTerm" },
-          { "npm start",                    "tabnew npm start | term npm start" },
-          { "Prettier",                     "Prettier" },
-          { "Toggle Indent Lines",          "IndentBlanklineToggle" },
-          { "Diffview Open",                "DiffviewOpen" },
-          { "Diffview Close",               "DiffviewClose" },
-          { "Toggle Filetree",              "NvimTreeToggle" },
-          { "Toggle Treesitter Context",    "TSContextToggle" },
-          { "LSP Restart",                  "LspRestart" },
-          { "Remove all // comments",       "%s/\\/\\/.*//g" },
-          { "Remove all # comments",        "%s/#.*//g" },
-          { "Mason",                        "Mason" },
-          { "Lazy",                         "Lazy" },
-          { "Package Manager",              "Lazy" },
-          { "Show Undo Tree",               "UndotreeToggle" },
-          { "Copilot disable",              "Copilot disable" },
-          { "Copilot enable",               "Copilot enable" },
-          { "Copilot restart",              "Copilot restart" },
-          { "Toggle Spell check",           "set spell!" },
-          { "Open Blame Commit in Browser", "GitBlameOpenCommitURL" },
-          { "Toggle Git Blame",             "GitBlameToggle" },
-          { "Refresh Colorizer",            "ColorizerReloadAllBuffers" },
-          { "Toggle Colorizer",             "ColorizerToggle" },
-          { "Show TODO",                    "TodoTelescope" },
-          { "Test",                         "Telescope menu test" },
+          { 'Checkhealth',                  'checkhealth' },
+          { 'Files',                        'Telescope find_files' },
+          { 'Run Tests',                    "lua require('neotest').run.run(vim.fn.expand('%'))" },
+          { 'Zen Mode Enable/Disable',      'ZenMode' },
+          { 'Change Colorscheme',           'Telescope colorscheme' },
+          { 'Markdown Preview',             'MarkdownPreviewToggle' },
+          { 'Toggle Terminal',              'ToggleTerm' },
+          { 'npm start',                    'tabnew npm start | term npm start' },
+          { 'Prettier',                     'Prettier' },
+          { 'Toggle Indent Lines',          'IndentBlanklineToggle' },
+          { 'Diffview Open',                'DiffviewOpen' },
+          { 'Diffview Close',               'DiffviewClose' },
+          { 'Toggle Filetree',              'NvimTreeToggle' },
+          { 'Toggle Treesitter Context',    'TSContextToggle' },
+          { 'LSP Restart',                  'LspRestart' },
+          { 'Remove all // comments',       '%s/\\/\\/.*//g' },
+          { 'Remove all # comments',        '%s/#.*//g' },
+          { 'Mason',                        'Mason' },
+          { 'Lazy',                         'Lazy' },
+          { 'Package Manager',              'Lazy' },
+          { 'Show Undo Tree',               'UndotreeToggle' },
+          { 'Copilot disable',              'Copilot disable' },
+          { 'Copilot enable',               'Copilot enable' },
+          { 'Copilot restart',              'Copilot restart' },
+          { 'Toggle Spell check',           'set spell!' },
+          { 'Open Blame Commit in Browser', 'GitBlameOpenCommitURL' },
+          { 'Toggle Git Blame',             'GitBlameToggle' },
+          { 'Refresh Colorizer',            'ColorizerReloadAllBuffers' },
+          { 'Toggle Colorizer',             'ColorizerToggle' },
+          { 'Show TODO',                    'TodoTelescope' },
+          { 'Test',                         'Telescope menu test' },
         },
       },
     },
@@ -293,7 +298,7 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
-pcall(require("telescope").load_extension, "menu")
+pcall(require('telescope').load_extension, 'menu')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -315,29 +320,29 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<C-f>', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
-vim.keymap.set('n', "<leader>fh", function()
-  require("telescope.builtin").help_tags()
+vim.keymap.set('n', '<leader>fh', function()
+  require('telescope.builtin').help_tags()
 end)
-vim.keymap.set('n', "<leader>gb", function()
-  require("telescope.builtin").git_branches()
+vim.keymap.set('n', '<leader>gb', function()
+  require('telescope.builtin').git_branches()
 end)
-vim.keymap.set('n', "<leader>gc", function()
-  require("telescope.builtin").git_commits()
+vim.keymap.set('n', '<leader>gc', function()
+  require('telescope.builtin').git_commits()
 end)
-vim.keymap.set('n', "<M-p>", "<cmd>Telescope menu<cr>")
-vim.keymap.set('t', "<M-p>", "<cmd>Telescope menu<cr>")
+vim.keymap.set('n', '<M-p>', '<cmd>Telescope menu<cr>')
+vim.keymap.set('t', '<M-p>', '<cmd>Telescope menu<cr>')
 
 -- Git keybinds
 vim.keymap.set('n', '<leader>gs', '<cmd>Git<CR>')
-vim.keymap.set("n", "<C-b>", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set('n', '<C-b>', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
-vim.api.nvim_create_user_command("W", function()
-  vim.cmd("w")
+vim.api.nvim_create_user_command('W', function()
+  vim.cmd 'w'
 end, { nargs = 0 })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup({
+require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim',
     'html', 'make', 'sql', 'css' },
@@ -403,9 +408,11 @@ require('nvim-treesitter.configs').setup({
       },
     },
   },
-})
+}
 
 -- Diagnostic keymaps
+vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']e', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
@@ -503,11 +510,12 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
     }
-  end
+  end,
 }
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
+local cmp_icons = require 'custom.icons'
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -552,6 +560,20 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
+  },
+  formatting = {
+    format = function(_, item)
+      local icon = cmp_icons[item.kind] or ''
+      if string.len(item.abbr) > 50 then
+        item.abbr = string.sub(item.abbr, 1, 50) .. ' ...'
+      end
+
+      icon = ' ' .. icon .. ' ' .. item.kind .. ' '
+      item.menu = cmp_icons.text
+      item.kind = icon
+
+      return item
+    end,
   },
 }
 
