@@ -125,7 +125,7 @@ require('lazy').setup({
     main = 'ibl',
     opts = {
       indent = {
-        char = '│',
+        char = '┊',
       },
       whitespace = {
         remove_blankline_trail = true,
