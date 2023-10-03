@@ -126,7 +126,9 @@ require('lazy').setup({
     opts = {
       indent = {
         char = '│',
-        -- show_trailing_blankline_indent = false,
+      },
+      whitespace = {
+        remove_blankline_trail = true,
       },
     },
   },
