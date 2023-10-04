@@ -337,6 +337,10 @@ end)
 vim.keymap.set('n', '<M-p>', '<cmd>Telescope menu<cr>')
 vim.keymap.set('t', '<M-p>', '<cmd>Telescope menu<cr>')
 
+-- Writing file CTRL+S
+vim.keymap.set('n', '<C-s>', '<cmd>w<cr>', { desc = 'Write file' })
+vim.keymap.set('i', '<C-s>', '<cmd>w<cr>', { desc = 'Write file' })
+
 -- Git keybinds
 vim.keymap.set('n', '<leader>gs', '<cmd>Git<CR>')
 vim.keymap.set('n', '<C-b>', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
