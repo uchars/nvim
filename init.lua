@@ -188,7 +188,10 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.breakindent = true
 
 -- Save undo history
+vim.opt.backup = false
+vim.opt.undodir = vim.fn.stdpath 'data' .. '/undodir'
 vim.o.undofile = true
+vim.o.swapfile = false
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
@@ -425,6 +428,7 @@ vim.keymap.set('n', ']e', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ Configure LSP ]]
@@ -486,7 +490,6 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   cmake = {},
-  asm_lsp = {},
   bashls = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   lua_ls = {
@@ -585,62 +588,6 @@ cmp.setup {
     end,
     fields = { 'abbr', 'kind', 'menu' },
     expandable_indicator = true,
-  },
-  enabled = true,
-  preselect = 'None', -- 'None' | 'item'
-  revision = 1,       -- Not sure what this does
-  completion = {
-    completeopt = 'menu,menuone,noinsert',
-    autocomplete = {
-      'TextChanged',
-    },
-    keyword_length = 1, -- Number of characters needed to trigger autocomplete
-    keyword_pattern = '\\k\\+',
-    get_trigger_characters = function(trigger_characters)
-      return trigger_characters
-    end,
-  },
-  sorting = {
-    comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-    },
-    priority_weight = 2,
-  },
-  matching = {
-    disallow_fuzzy_matching = false,
-    disallow_partial_matching = false,
-    disallow_prefix_unmatching = false,
-    disallow_fullfuzzy_matching = false,
-    disallow_partial_fuzzy_matching = false,
-  },
-  performance = {
-    debounce = 100,
-    throttle = 100,
-    async_budget = 1000,
-    fetching_timeout = 5000,
-    max_view_entries = 50,
-    confirm_resolve_timeout = 500,
-  },
-  confirmation = {
-    default_behavior = 'replace',
-    get_commit_characters = function(commit_characters)
-      return commit_characters
-    end,
-  },
-  experimental = {
-    ghost_text = true,
-  },
-  view = {
-    entries = { name = 'custom', separator = '|' },
-    docs = {
-      auto_open = true,
-    },
   },
 }
 
